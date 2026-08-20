@@ -1,0 +1,28 @@
+rules_version = '2';
+
+// Anyone can read the supplier directory (matches the site's public
+// browsing/search/map — no sign-in needed to view).
+// Only the Hulo procurement Google account can write: add, edit, or
+// delete suppliers, or trigger the one-time data seed.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isOwner() {
+      return request.auth != null
+        && request.auth.token.email == 'wael.chalak1@gmail.com'
+        && request.auth.token.email_verified == true;
+    }
+
+    match /suppliers/{supplierId} {
+      allow read: if true;
+      allow write: if isOwner();
+    }
+
+    // Internal bookkeeping doc (meta/seed) that marks whether the initial
+    // 148 suppliers have already been loaded, so it only happens once.
+    match /meta/{docId} {
+      allow read: if true;
+      allow write: if isOwner();
+    }
+  }
+}

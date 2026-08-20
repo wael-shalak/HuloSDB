@@ -1,0 +1,2079 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Firebase (compat SDK): must load before assets/dc-runtime.js boots the app. -->
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="assets/dc-runtime.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Hulo Supplier Database, Lebanon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<style>/* vietnamese */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("assets/fonts/archivo-vietnamese-400.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("assets/fonts/archivo-latin-ext-400.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("assets/fonts/archivo-latin-400.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("assets/fonts/archivo-vietnamese-400.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("assets/fonts/archivo-latin-ext-400.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("assets/fonts/archivo-latin-400.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("assets/fonts/archivo-vietnamese-400.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("assets/fonts/archivo-latin-ext-400.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("assets/fonts/archivo-latin-400.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("assets/fonts/archivo-vietnamese-400.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("assets/fonts/archivo-latin-ext-400.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("assets/fonts/archivo-latin-400.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("assets/fonts/archivo-vietnamese-400.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("assets/fonts/archivo-latin-ext-400.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("assets/fonts/archivo-latin-400.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<style>/* required styles */
+
+.leaflet-pane,
+.leaflet-tile,
+.leaflet-marker-icon,
+.leaflet-marker-shadow,
+.leaflet-tile-container,
+.leaflet-pane > svg,
+.leaflet-pane > canvas,
+.leaflet-zoom-box,
+.leaflet-image-layer,
+.leaflet-layer {
+	position: absolute;
+	left: 0;
+	top: 0;
+	}
+.leaflet-container {
+	overflow: hidden;
+	}
+.leaflet-tile,
+.leaflet-marker-icon,
+.leaflet-marker-shadow {
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	        user-select: none;
+	  -webkit-user-drag: none;
+	}
+/* Prevents IE11 from highlighting tiles in blue */
+.leaflet-tile::selection {
+	background: transparent;
+}
+/* Safari renders non-retina tile on retina better with this, but Chrome is worse */
+.leaflet-safari .leaflet-tile {
+	image-rendering: -webkit-optimize-contrast;
+	}
+/* hack that prevents hw layers "stretching" when loading new tiles */
+.leaflet-safari .leaflet-tile-container {
+	width: 1600px;
+	height: 1600px;
+	-webkit-transform-origin: 0 0;
+	}
+.leaflet-marker-icon,
+.leaflet-marker-shadow {
+	display: block;
+	}
+/* .leaflet-container svg: reset svg max-width decleration shipped in Joomla! (joomla.org) 3.x */
+/* .leaflet-container img: map is broken in FF if you have max-width: 100% on tiles */
+.leaflet-container .leaflet-overlay-pane svg {
+	max-width: none !important;
+	max-height: none !important;
+	}
+.leaflet-container .leaflet-marker-pane img,
+.leaflet-container .leaflet-shadow-pane img,
+.leaflet-container .leaflet-tile-pane img,
+.leaflet-container img.leaflet-image-layer,
+.leaflet-container .leaflet-tile {
+	max-width: none !important;
+	max-height: none !important;
+	width: auto;
+	padding: 0;
+	}
+
+.leaflet-container img.leaflet-tile {
+	/* See: https://bugs.chromium.org/p/chromium/issues/detail?id=600120 */
+	mix-blend-mode: plus-lighter;
+}
+
+.leaflet-container.leaflet-touch-zoom {
+	-ms-touch-action: pan-x pan-y;
+	touch-action: pan-x pan-y;
+	}
+.leaflet-container.leaflet-touch-drag {
+	-ms-touch-action: pinch-zoom;
+	/* Fallback for FF which doesn't support pinch-zoom */
+	touch-action: none;
+	touch-action: pinch-zoom;
+}
+.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom {
+	-ms-touch-action: none;
+	touch-action: none;
+}
+.leaflet-container {
+	-webkit-tap-highlight-color: transparent;
+}
+.leaflet-container a {
+	-webkit-tap-highlight-color: rgba(51, 181, 229, 0.4);
+}
+.leaflet-tile {
+	filter: inherit;
+	visibility: hidden;
+	}
+.leaflet-tile-loaded {
+	visibility: inherit;
+	}
+.leaflet-zoom-box {
+	width: 0;
+	height: 0;
+	-moz-box-sizing: border-box;
+	     box-sizing: border-box;
+	z-index: 800;
+	}
+/* workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=888319 */
+.leaflet-overlay-pane svg {
+	-moz-user-select: none;
+	}
+
+.leaflet-pane         { z-index: 400; }
+
+.leaflet-tile-pane    { z-index: 200; }
+.leaflet-overlay-pane { z-index: 400; }
+.leaflet-shadow-pane  { z-index: 500; }
+.leaflet-marker-pane  { z-index: 600; }
+.leaflet-tooltip-pane   { z-index: 650; }
+.leaflet-popup-pane   { z-index: 700; }
+
+.leaflet-map-pane canvas { z-index: 100; }
+.leaflet-map-pane svg    { z-index: 200; }
+
+.leaflet-vml-shape {
+	width: 1px;
+	height: 1px;
+	}
+.lvml {
+	behavior: url(#default#VML);
+	display: inline-block;
+	position: absolute;
+	}
+
+
+/* control positioning */
+
+.leaflet-control {
+	position: relative;
+	z-index: 800;
+	pointer-events: visiblePainted; /* IE 9-10 doesn't have auto */
+	pointer-events: auto;
+	}
+.leaflet-top,
+.leaflet-bottom {
+	position: absolute;
+	z-index: 1000;
+	pointer-events: none;
+	}
+.leaflet-top {
+	top: 0;
+	}
+.leaflet-right {
+	right: 0;
+	}
+.leaflet-bottom {
+	bottom: 0;
+	}
+.leaflet-left {
+	left: 0;
+	}
+.leaflet-control {
+	float: left;
+	clear: both;
+	}
+.leaflet-right .leaflet-control {
+	float: right;
+	}
+.leaflet-top .leaflet-control {
+	margin-top: 10px;
+	}
+.leaflet-bottom .leaflet-control {
+	margin-bottom: 10px;
+	}
+.leaflet-left .leaflet-control {
+	margin-left: 10px;
+	}
+.leaflet-right .leaflet-control {
+	margin-right: 10px;
+	}
+
+
+/* zoom and fade animations */
+
+.leaflet-fade-anim .leaflet-popup {
+	opacity: 0;
+	-webkit-transition: opacity 0.2s linear;
+	   -moz-transition: opacity 0.2s linear;
+	        transition: opacity 0.2s linear;
+	}
+.leaflet-fade-anim .leaflet-map-pane .leaflet-popup {
+	opacity: 1;
+	}
+.leaflet-zoom-animated {
+	-webkit-transform-origin: 0 0;
+	    -ms-transform-origin: 0 0;
+	        transform-origin: 0 0;
+	}
+svg.leaflet-zoom-animated {
+	will-change: transform;
+}
+
+.leaflet-zoom-anim .leaflet-zoom-animated {
+	-webkit-transition: -webkit-transform 0.25s cubic-bezier(0,0,0.25,1);
+	   -moz-transition:    -moz-transform 0.25s cubic-bezier(0,0,0.25,1);
+	        transition:         transform 0.25s cubic-bezier(0,0,0.25,1);
+	}
+.leaflet-zoom-anim .leaflet-tile,
+.leaflet-pan-anim .leaflet-tile {
+	-webkit-transition: none;
+	   -moz-transition: none;
+	        transition: none;
+	}
+
+.leaflet-zoom-anim .leaflet-zoom-hide {
+	visibility: hidden;
+	}
+
+
+/* cursors */
+
+.leaflet-interactive {
+	cursor: pointer;
+	}
+.leaflet-grab {
+	cursor: -webkit-grab;
+	cursor:    -moz-grab;
+	cursor:         grab;
+	}
+.leaflet-crosshair,
+.leaflet-crosshair .leaflet-interactive {
+	cursor: crosshair;
+	}
+.leaflet-popup-pane,
+.leaflet-control {
+	cursor: auto;
+	}
+.leaflet-dragging .leaflet-grab,
+.leaflet-dragging .leaflet-grab .leaflet-interactive,
+.leaflet-dragging .leaflet-marker-draggable {
+	cursor: move;
+	cursor: -webkit-grabbing;
+	cursor:    -moz-grabbing;
+	cursor:         grabbing;
+	}
+
+/* marker & overlays interactivity */
+.leaflet-marker-icon,
+.leaflet-marker-shadow,
+.leaflet-image-layer,
+.leaflet-pane > svg path,
+.leaflet-tile-container {
+	pointer-events: none;
+	}
+
+.leaflet-marker-icon.leaflet-interactive,
+.leaflet-image-layer.leaflet-interactive,
+.leaflet-pane > svg path.leaflet-interactive,
+svg.leaflet-image-layer.leaflet-interactive path {
+	pointer-events: visiblePainted; /* IE 9-10 doesn't have auto */
+	pointer-events: auto;
+	}
+
+/* visual tweaks */
+
+.leaflet-container {
+	background: #ddd;
+	outline-offset: 1px;
+	}
+.leaflet-container a {
+	color: #0078A8;
+	}
+.leaflet-zoom-box {
+	border: 2px dotted #38f;
+	background: rgba(255,255,255,0.5);
+	}
+
+
+/* general typography */
+.leaflet-container {
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-size: 0.75rem;
+	line-height: 1.5;
+	}
+
+
+/* general toolbar styles */
+
+.leaflet-bar {
+	box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+	border-radius: 4px;
+	}
+.leaflet-bar a {
+	background-color: #fff;
+	border-bottom: 1px solid #ccc;
+	width: 26px;
+	height: 26px;
+	line-height: 26px;
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	color: black;
+	}
+.leaflet-bar a,
+.leaflet-control-layers-toggle {
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	display: block;
+	}
+.leaflet-bar a:hover,
+.leaflet-bar a:focus {
+	background-color: #f4f4f4;
+	}
+.leaflet-bar a:first-child {
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	}
+.leaflet-bar a:last-child {
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	border-bottom: none;
+	}
+.leaflet-bar a.leaflet-disabled {
+	cursor: default;
+	background-color: #f4f4f4;
+	color: #bbb;
+	}
+
+.leaflet-touch .leaflet-bar a {
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	}
+.leaflet-touch .leaflet-bar a:first-child {
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+	}
+.leaflet-touch .leaflet-bar a:last-child {
+	border-bottom-left-radius: 2px;
+	border-bottom-right-radius: 2px;
+	}
+
+/* zoom control */
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+	font: bold 18px 'Lucida Console', Monaco, monospace;
+	text-indent: 1px;
+	}
+
+.leaflet-touch .leaflet-control-zoom-in, .leaflet-touch .leaflet-control-zoom-out  {
+	font-size: 22px;
+	}
+
+
+/* layers control */
+
+.leaflet-control-layers {
+	box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+	background: #fff;
+	border-radius: 5px;
+	}
+.leaflet-control-layers-toggle {
+	background-image: url("assets/images/marker-icon.png");
+	width: 36px;
+	height: 36px;
+	}
+.leaflet-retina .leaflet-control-layers-toggle {
+	background-image: url("assets/images/marker-icon-2x.png");
+	background-size: 26px 26px;
+	}
+.leaflet-touch .leaflet-control-layers-toggle {
+	width: 44px;
+	height: 44px;
+	}
+.leaflet-control-layers .leaflet-control-layers-list,
+.leaflet-control-layers-expanded .leaflet-control-layers-toggle {
+	display: none;
+	}
+.leaflet-control-layers-expanded .leaflet-control-layers-list {
+	display: block;
+	position: relative;
+	}
+.leaflet-control-layers-expanded {
+	padding: 6px 10px 6px 6px;
+	color: #333;
+	background: #fff;
+	}
+.leaflet-control-layers-scrollbar {
+	overflow-y: scroll;
+	overflow-x: hidden;
+	padding-right: 5px;
+	}
+.leaflet-control-layers-selector {
+	margin-top: 2px;
+	position: relative;
+	top: 1px;
+	}
+.leaflet-control-layers label {
+	display: block;
+	font-size: 13px;
+	font-size: 1.08333em;
+	}
+.leaflet-control-layers-separator {
+	height: 0;
+	border-top: 1px solid #ddd;
+	margin: 5px -10px 5px -6px;
+	}
+
+/* Default icon URLs */
+.leaflet-default-icon-path { /* used only in path-guessing heuristic, see L.Icon.Default */
+	background-image: url("assets/images/marker-shadow.png");
+	}
+
+
+/* attribution and scale controls */
+
+.leaflet-container .leaflet-control-attribution {
+	background: #fff;
+	background: rgba(255, 255, 255, 0.8);
+	margin: 0;
+	}
+.leaflet-control-attribution,
+.leaflet-control-scale-line {
+	padding: 0 5px;
+	color: #333;
+	line-height: 1.4;
+	}
+.leaflet-control-attribution a {
+	text-decoration: none;
+	}
+.leaflet-control-attribution a:hover,
+.leaflet-control-attribution a:focus {
+	text-decoration: underline;
+	}
+.leaflet-attribution-flag {
+	display: inline !important;
+	vertical-align: baseline !important;
+	width: 1em;
+	height: 0.6669em;
+	}
+.leaflet-left .leaflet-control-scale {
+	margin-left: 5px;
+	}
+.leaflet-bottom .leaflet-control-scale {
+	margin-bottom: 5px;
+	}
+.leaflet-control-scale-line {
+	border: 2px solid #777;
+	border-top: none;
+	line-height: 1.1;
+	padding: 2px 5px 1px;
+	white-space: nowrap;
+	-moz-box-sizing: border-box;
+	     box-sizing: border-box;
+	background: rgba(255, 255, 255, 0.8);
+	text-shadow: 1px 1px #fff;
+	}
+.leaflet-control-scale-line:not(:first-child) {
+	border-top: 2px solid #777;
+	border-bottom: none;
+	margin-top: -2px;
+	}
+.leaflet-control-scale-line:not(:first-child):not(:last-child) {
+	border-bottom: 2px solid #777;
+	}
+
+.leaflet-touch .leaflet-control-attribution,
+.leaflet-touch .leaflet-control-layers,
+.leaflet-touch .leaflet-bar {
+	box-shadow: none;
+	}
+.leaflet-touch .leaflet-control-layers,
+.leaflet-touch .leaflet-bar {
+	border: 2px solid rgba(0,0,0,0.2);
+	background-clip: padding-box;
+	}
+
+
+/* popup */
+
+.leaflet-popup {
+	position: absolute;
+	text-align: center;
+	margin-bottom: 20px;
+	}
+.leaflet-popup-content-wrapper {
+	padding: 1px;
+	text-align: left;
+	border-radius: 12px;
+	}
+.leaflet-popup-content {
+	margin: 13px 24px 13px 20px;
+	line-height: 1.3;
+	font-size: 13px;
+	font-size: 1.08333em;
+	min-height: 1px;
+	}
+.leaflet-popup-content p {
+	margin: 17px 0;
+	margin: 1.3em 0;
+	}
+.leaflet-popup-tip-container {
+	width: 40px;
+	height: 20px;
+	position: absolute;
+	left: 50%;
+	margin-top: -1px;
+	margin-left: -20px;
+	overflow: hidden;
+	pointer-events: none;
+	}
+.leaflet-popup-tip {
+	width: 17px;
+	height: 17px;
+	padding: 1px;
+
+	margin: -10px auto 0;
+	pointer-events: auto;
+
+	-webkit-transform: rotate(45deg);
+	   -moz-transform: rotate(45deg);
+	    -ms-transform: rotate(45deg);
+	        transform: rotate(45deg);
+	}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+	background: white;
+	color: #333;
+	box-shadow: 0 3px 14px rgba(0,0,0,0.4);
+	}
+.leaflet-container a.leaflet-popup-close-button {
+	position: absolute;
+	top: 0;
+	right: 0;
+	border: none;
+	text-align: center;
+	width: 24px;
+	height: 24px;
+	font: 16px/24px Tahoma, Verdana, sans-serif;
+	color: #757575;
+	text-decoration: none;
+	background: transparent;
+	}
+.leaflet-container a.leaflet-popup-close-button:hover,
+.leaflet-container a.leaflet-popup-close-button:focus {
+	color: #585858;
+	}
+.leaflet-popup-scrolled {
+	overflow: auto;
+	}
+
+.leaflet-oldie .leaflet-popup-content-wrapper {
+	-ms-zoom: 1;
+	}
+.leaflet-oldie .leaflet-popup-tip {
+	width: 24px;
+	margin: 0 auto;
+
+	-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678)";
+	filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678);
+	}
+
+.leaflet-oldie .leaflet-control-zoom,
+.leaflet-oldie .leaflet-control-layers,
+.leaflet-oldie .leaflet-popup-content-wrapper,
+.leaflet-oldie .leaflet-popup-tip {
+	border: 1px solid #999;
+	}
+
+
+/* div icon */
+
+.leaflet-div-icon {
+	background: #fff;
+	border: 1px solid #666;
+	}
+
+
+/* Tooltip */
+/* Base styles for the element that has a tooltip */
+.leaflet-tooltip {
+	position: absolute;
+	padding: 6px;
+	background-color: #fff;
+	border: 1px solid #fff;
+	border-radius: 3px;
+	color: #222;
+	white-space: nowrap;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	pointer-events: none;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+	}
+.leaflet-tooltip.leaflet-interactive {
+	cursor: pointer;
+	pointer-events: auto;
+	}
+.leaflet-tooltip-top:before,
+.leaflet-tooltip-bottom:before,
+.leaflet-tooltip-left:before,
+.leaflet-tooltip-right:before {
+	position: absolute;
+	pointer-events: none;
+	border: 6px solid transparent;
+	background: transparent;
+	content: "";
+	}
+
+/* Directions */
+
+.leaflet-tooltip-bottom {
+	margin-top: 6px;
+}
+.leaflet-tooltip-top {
+	margin-top: -6px;
+}
+.leaflet-tooltip-bottom:before,
+.leaflet-tooltip-top:before {
+	left: 50%;
+	margin-left: -6px;
+	}
+.leaflet-tooltip-top:before {
+	bottom: 0;
+	margin-bottom: -12px;
+	border-top-color: #fff;
+	}
+.leaflet-tooltip-bottom:before {
+	top: 0;
+	margin-top: -12px;
+	margin-left: -6px;
+	border-bottom-color: #fff;
+	}
+.leaflet-tooltip-left {
+	margin-left: -6px;
+}
+.leaflet-tooltip-right {
+	margin-left: 6px;
+}
+.leaflet-tooltip-left:before,
+.leaflet-tooltip-right:before {
+	top: 50%;
+	margin-top: -6px;
+	}
+.leaflet-tooltip-left:before {
+	right: 0;
+	margin-right: -12px;
+	border-left-color: #fff;
+	}
+.leaflet-tooltip-right:before {
+	left: 0;
+	margin-left: -12px;
+	border-right-color: #fff;
+	}
+
+/* Printing */
+
+@media print {
+	/* Prevent printers from removing background-images of controls. */
+	.leaflet-control {
+		-webkit-print-color-adjust: exact;
+		print-color-adjust: exact;
+		}
+	}
+</style>
+<script src="assets/leaflet.js"></script>
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:#f3f2f2;color:#201e1d;font-family:"Archivo",system-ui,sans-serif;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  ::selection{background:#fdd020;color:#201e1d}
+  :focus{outline:none}
+  :focus-visible{outline:2px solid #fdd020;outline-offset:2px}
+  a{color:#7a5c00;text-decoration:none}
+  a:hover{color:#201e1d;text-decoration:underline;text-underline-offset:3px}
+  input,select,textarea,button{font-family:inherit}
+  .lf .leaflet-tile-pane{filter:grayscale(1) contrast(1.05)}
+  .leaflet-container{background:#201e1d;font-family:"Archivo",system-ui,sans-serif}
+  .leaflet-control-attribution{font-size:9px;background:rgba(243,242,242,.7)!important;border-radius:0}
+  .leaflet-popup-content-wrapper,.leaflet-popup-tip{border-radius:0;box-shadow:0 12px 32px rgba(45,43,43,.28);padding:0}
+  .leaflet-popup-content{margin:0;width:240px!important}
+  .leaflet-popup-close-button{color:#f3f2f2!important;padding:8px 8px 0 0!important}
+  @keyframes cross{from{transform:translateX(-14vw)}to{transform:translateX(114vw)}}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes leafdrift{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-10px) rotate(8deg)}}
+  .pin-dot{transition:r .16s ease,stroke-width .16s ease;cursor:pointer}
+  .pin-halo{animation:pinpulse 2.8s ease-out infinite}
+  @keyframes pinpulse{0%{r:7;stroke-opacity:.9}70%{r:17;stroke-opacity:0}100%{r:17;stroke-opacity:0}}
+  .leaflet-marker-pane,.leaflet-overlay-pane{animation:hulofade .5s ease both}
+  @keyframes hulofade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @keyframes hulodrawer{from{transform:translateX(24px);opacity:0}to{transform:none;opacity:1}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:#f3f2f2">
+
+<!-- ══════════ TOP BAR ══════════ -->
+<div style="position:sticky;top:0;z-index:120;background:#201e1d;border-bottom:2px solid #fdd020">
+  <div style="max-width:1600px;margin:0 auto;padding:0 28px;display:flex;align-items:stretch;gap:0;height:64px">
+    <div sc-camel-on-click="{{ goHome }}" style="display:flex;align-items:center;gap:14px;padding-right:24px;border-right:1px solid rgba(243,242,242,.18);cursor:pointer">
+      <img src="assets/images/hulo-logo.jpg" alt="Hulo" style="height:38px;width:auto;display:block">
+      <div style="display:flex;flex-direction:column;line-height:1.15">
+        <span style="font-weight:800;font-size:15px;color:#f3f2f2;letter-spacing:-.01em">HULO</span>
+        <span style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(243,242,242,.55);font-weight:600">Supplier Database</span>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:stretch;margin-left:24px;gap:0">
+      <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="4">
+        <button sc-camel-on-click="{{ item.go }}" style="border:0;background:transparent;cursor:pointer;padding:0 20px;display:flex;align-items:center;gap:8px;font-weight:600;font-size:13.5px;letter-spacing:.01em;color:{{ item.color }};border-bottom:3px solid {{ item.rule }};transition:color .14s" style-hover="color:#fdd020">
+          {{ item.label }}
+          <span style="font-size:10px;font-weight:700;color:rgba(243,242,242,.4)">{{ item.count }}</span>
+        </button>
+      </sc-for>
+    </div>
+
+    <div style="flex:1"></div>
+
+    <div style="display:flex;align-items:center;gap:12px">
+      <button sc-camel-on-click="{{ openPalette }}" style="display:flex;align-items:center;gap:10px;background:rgba(243,242,242,.07);border:1px solid rgba(243,242,242,.16);color:rgba(243,242,242,.6);font-size:12.5px;font-weight:500;padding:8px 12px;cursor:pointer" style-hover="border-color:#fdd020;color:#fdd020">
+        <svg width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4.3-4.3"></path></svg>
+        Search everything
+        <span style="font-family:ui-monospace,monospace;font-size:11px;border:1px solid rgba(243,242,242,.22);padding:1px 5px;letter-spacing:.04em">⌘K</span>
+      </button>
+      <div style="display:flex;align-items:center;gap:7px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(243,242,242,.45)">
+        <span style="width:6px;height:6px;background:#fdd020;display:block"></span>{{ liveLabel }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ LANDING ══════════ -->
+<sc-if value="{{ isLanding }}" hint-placeholder-val="{{ true }}">
+<div>
+
+  <!-- HERO -->
+  <div style="position:relative;background:#201e1d;overflow:hidden;border-bottom:2px solid #201e1d">
+    <div id="heroMap" style="position:absolute;inset:0;opacity:.5"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,#201e1d 0%,rgba(32,30,29,.92) 42%,rgba(32,30,29,.35) 100%);pointer-events:none"></div>
+    <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1">
+      <span style="position:absolute;top:18%;left:0;animation:cross 19s linear -3s infinite;opacity:.85">
+        <svg width="34" height="34" sc-camel-view-box="0 0 24 24" fill="none" stroke="#fdd020" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5a2.1 2.1 0 0 0-3-3L13 8 4.8 6.2a.5.5 0 0 0-.5.8l3 4.5-2 2H2.5a.5.5 0 0 0-.4.8l2.4 3.2 3.2 2.4a.5.5 0 0 0 .8-.4v-2.8l2-2 4.5 3a.5.5 0 0 0 .8-.5z"></path></svg>
+      </span>
+      <span style="position:absolute;top:63%;left:0;animation:cross 31s linear -12s infinite;opacity:.8">
+        <svg width="40" height="40" sc-camel-view-box="0 0 24 24" fill="none" stroke="#fdd020" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 17V6a1 1 0 0 0-1-1H2v12h4"></path><path d="M14 9h4l3.5 4V17h-3.5"></path><circle cx="8" cy="17.5" r="2.2"></circle><circle cx="17.5" cy="17.5" r="2.2"></circle></svg>
+      </span>
+      <span style="position:absolute;top:84%;left:0;animation:cross 46s linear -26s infinite;opacity:.7">
+        <svg width="38" height="38" sc-camel-view-box="0 0 24 24" fill="none" stroke="#fdd020" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2.4 2.4 0 0 0 2-1 2.4 2.4 0 0 1 4 0 2.4 2.4 0 0 0 4 0 2.4 2.4 0 0 1 4 0 2.4 2.4 0 0 0 2 1"></path><path d="M4 18 2.4 13.4a1 1 0 0 1 .9-1.4h17.4a1 1 0 0 1 .9 1.4L20 18"></path><path d="M12 3v9"></path><path d="M6.5 12V8.5h11V12"></path></svg>
+      </span>
+    </div>
+    <div style="position:relative;max-width:1600px;margin:0 auto;padding:104px 28px 0;pointer-events:none">
+      <div style="max-width:900px">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:28px">
+          <span style="background:#fdd020;color:#201e1d;font-weight:800;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px">Lebanon · 8 governorates</span>
+          <span style="font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(243,242,242,.5)">Live procurement intelligence</span>
+        </div>
+        <h1 style="font-size:clamp(44px,6.6vw,104px);line-height:.94;letter-spacing:-.035em;font-weight:900;color:#f3f2f2;margin:0 0 28px">Every supplier<br>behind every<br><span style="color:#fdd020">delivery.</span></h1>
+        <p style="font-size:19px;line-height:1.5;color:rgba(243,242,242,.72);max-width:620px;margin:0 0 36px;text-wrap:pretty">A reliable, mapped, ESG-scored database of the humanitarian vendors working in Lebanon, searchable in a keystroke.</p>
+        <div style="display:flex;gap:0;pointer-events:auto;flex-wrap:wrap">
+          <button sc-camel-on-click="{{ goDirectory }}" style="display:flex;align-items:center;justify-content:flex-start;gap:40px;min-width:300px;background:#fdd020;color:#201e1d;border:0;font-weight:800;font-size:15px;padding:18px 22px;cursor:pointer;transition:background .14s" style-hover="background:#f3f2f2">
+            Enter the database
+            <svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12h15M13 6l6 6-6 6"></path></svg>
+          </button>
+          <button sc-camel-on-click="{{ goEsg }}" style="display:flex;align-items:center;justify-content:flex-start;gap:24px;min-width:230px;background:transparent;color:#f3f2f2;border:1px solid rgba(243,242,242,.3);border-left:0;font-weight:800;font-size:15px;padding:18px 22px;cursor:pointer;transition:border-color .14s,color .14s" style-hover="border-color:#fdd020;color:#fdd020">
+            ESG coverage
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- stat strip -->
+    <div style="position:relative;max-width:1600px;margin:0 auto;padding:96px 28px 0">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid rgba(243,242,242,.35)">
+        <sc-for list="{{ heroStats }}" as="st" hint-placeholder-count="4">
+          <div style="padding:26px 24px 30px;border-right:1px solid rgba(243,242,242,.18)">
+            <div style="font-size:clamp(30px,3.4vw,46px);font-weight:900;letter-spacing:-.03em;line-height:1;color:{{ st.color }}">{{ st.value }}</div>
+            <div style="margin-top:10px;font-size:11.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:rgba(243,242,242,.5)">{{ st.label }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- WHAT'S INSIDE -->
+  <div style="max-width:1600px;margin:0 auto;padding:0 28px">
+    <div style="display:grid;grid-template-columns:1fr 2fr;gap:0;border-bottom:2px solid rgba(32,30,29,.4)">
+      <div style="padding:72px 40px 72px 0;border-right:2px solid rgba(32,30,29,.4)">
+        <div style="font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7a5c00;margin-bottom:18px">01 / What's inside</div>
+        <h2 style="font-size:38px;line-height:1.04;letter-spacing:-.03em;font-weight:900;margin:0 0 16px">Not a spreadsheet.<br>A decision tool.</h2>
+        <p style="color:#605d5d;margin:0;max-width:340px">Every category, town and status the consortium relies on, in one place.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr)">
+        <sc-for list="{{ features }}" as="f" hint-placeholder-count="4">
+          <div style="padding:36px 26px;border-right:1px solid rgba(32,30,29,.18);border-bottom:1px solid rgba(32,30,29,.18);transition:background .14s" style-hover="background:#eae9e9">
+            <div style="font-size:11px;font-weight:800;letter-spacing:.12em;color:#bab6b6;margin-bottom:22px">{{ f.num }}</div>
+            <h3 style="font-size:19px;font-weight:800;letter-spacing:-.015em;margin:0 0 8px">{{ f.title }}</h3>
+            <p style="font-size:13.5px;color:#605d5d;margin:0;text-wrap:pretty">{{ f.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- ESG BLOCK -->
+  <div style="max-width:1600px;margin:0 auto;padding:0 28px">
+    <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:0;border-bottom:2px solid rgba(32,30,29,.4)">
+      <div style="padding:72px 48px 72px 0">
+        <div style="font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7a5c00;margin-bottom:18px">02 / Accountability</div>
+        <h2 style="font-size:38px;line-height:1.04;letter-spacing:-.03em;font-weight:900;margin:0 0 16px">ESG coverage,<br>governorate by governorate.</h2>
+        <p style="color:#605d5d;max-width:380px;margin:0 0 28px">Donors ask what share of your spend goes to verified local suppliers. This answers it on screen, per district, in one click.</p>
+        <button sc-camel-on-click="{{ goEsg }}" style="display:flex;align-items:center;justify-content:flex-start;gap:32px;min-width:260px;background:#201e1d;color:#fdd020;border:0;font-weight:800;font-size:14px;padding:16px 20px;cursor:pointer" style-hover="background:#2d2b2b">
+          Open the ESG dashboard
+          <svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12h15M13 6l6 6-6 6"></path></svg>
+        </button>
+      </div>
+      <div style="padding:56px 0 64px;border-left:2px solid rgba(32,30,29,.4)">
+        <sc-for list="{{ esgRows }}" as="g" hint-placeholder-count="8">
+          <div style="display:grid;grid-template-columns:170px 1fr 88px;align-items:center;gap:16px;padding:11px 28px;border-bottom:1px solid rgba(32,30,29,.12)">
+            <div style="font-size:13.5px;font-weight:700">{{ g.name }}</div>
+            <div style="height:14px;background:#eae9e9;position:relative">
+              <div style="position:absolute;left:0;top:0;bottom:0;width:{{ g.pctW }};background:#fdd020"></div>
+            </div>
+            <div style="font-size:12.5px;font-weight:700;color:#605d5d;text-align:left">{{ g.detail }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- POSTER BANNER -->
+  <div style="background:#fdd020;margin-top:0">
+    <div style="max-width:1600px;margin:0 auto;padding:88px 28px">
+      <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:48px;align-items:end">
+        <h2 style="font-size:clamp(34px,4.6vw,68px);line-height:.98;letter-spacing:-.035em;font-weight:900;margin:0;color:#201e1d">Aid arrives faster<br>when we source together.</h2>
+        <div>
+          <p style="font-size:15px;color:#201e1d;opacity:.75;margin:0 0 22px;font-weight:500">Built for the humanitarian community in Lebanon. Maintained by Hulo Coop, open to our partners.</p>
+          <button sc-camel-on-click="{{ goDirectory }}" style="display:flex;align-items:center;justify-content:flex-start;gap:32px;width:100%;background:#201e1d;color:#fdd020;border:0;font-weight:800;font-size:15px;padding:18px 22px;cursor:pointer" style-hover="background:#000">
+            Enter the database
+            <svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12h15M13 6l6 6-6 6"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#201e1d;color:rgba(243,242,242,.5);font-size:12px">
+    <div style="max-width:1600px;margin:0 auto;padding:28px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap">
+      <span>Hulo Coop · Supplier Database · Lebanon</span>
+      <span>Demo build · sample data held in this browser</span>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ══════════ TOOL ══════════ -->
+<sc-if value="{{ isApp }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:1600px;margin:0 auto;padding:0 28px 80px">
+
+  <!-- page head -->
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;padding:34px 0 20px;flex-wrap:wrap">
+    <div>
+      <div style="font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7a5c00;margin-bottom:10px">{{ pageKicker }}</div>
+      <h1 style="font-size:36px;font-weight:900;letter-spacing:-.03em;line-height:1;margin:0 0 8px;display:flex;align-items:center;gap:14px">
+        {{ pageTitle }}
+        <sc-if value="{{ isEsg }}" hint-placeholder-val="{{ false }}">
+          <svg width="28" height="28" sc-camel-view-box="0 0 24 24" fill="none" stroke="#1F7A4C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation:spin 5s linear infinite;flex:none"><path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5"></path><path d="M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12"></path><path d="m14 16-3 3 3 3"></path><path d="M8.293 13.596 7.196 9.5 3.1 10.598"></path><path d="m9.344 5.811 1.093-1.892A1.83 1.83 0 0 1 12 3a1.784 1.784 0 0 1 1.563.892l4.11 7.114"></path><path d="m13.378 9.633 4.096 1.098 1.097-4.096"></path></svg>
+        </sc-if>
+      </h1>
+      <p style="color:#605d5d;margin:0;font-size:14px">{{ pageSub }}</p>
+    </div>
+    <div style="display:flex;gap:0">
+      <button sc-camel-on-click="{{ exportCsv }}" style="display:flex;align-items:center;gap:20px;background:transparent;border:1px solid rgba(32,30,29,.4);color:#201e1d;font-weight:800;font-size:13px;padding:12px 16px;cursor:pointer" style-hover="background:#eae9e9">
+        <svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3v12M7 11l5 5 5-5M4 21h16"></path></svg>
+        Export CSV
+      </button>
+      <button sc-camel-on-click="{{ printView }}" style="display:flex;align-items:center;gap:20px;background:transparent;border:1px solid rgba(32,30,29,.4);border-left:0;color:#201e1d;font-weight:800;font-size:13px;padding:12px 16px;cursor:pointer" style-hover="background:#eae9e9">
+        <svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9V3h12v6M6 18H4v-7h16v7h-2M8 14h8v7H8z"></path></svg>
+        PDF
+      </button>
+    </div>
+  </div>
+
+  <!-- FILTER RAIL -->
+  <sc-if value="{{ showFilters }}" hint-placeholder-val="{{ true }}">
+  <div style="border-top:2px solid rgba(32,30,29,.4);border-bottom:2px solid rgba(32,30,29,.4);background:#f3f2f2">
+    <div style="display:flex;align-items:stretch;flex-wrap:wrap">
+      <div style="flex:1 1 320px;min-width:260px;display:flex;align-items:center;gap:12px;padding:0 16px;border-right:1px solid rgba(32,30,29,.18)">
+        <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="#605d5d" stroke-width="2.2"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4.3-4.3"></path></svg>
+        <input value="{{ q }}" sc-camel-on-input="{{ onSearch }}" placeholder="Filter as you type: name, category, town, contact…" style="flex:1;border:0;background:transparent;padding:15px 0;font-size:14.5px;font-weight:500;color:#201e1d">
+        <span style="font-size:11px;font-weight:800;letter-spacing:.08em;color:#7a5c00">{{ resultLabel }}</span>
+      </div>
+      <sc-for list="{{ filterSelects }}" as="fs" hint-placeholder-count="4">
+        <div style="border-right:1px solid rgba(32,30,29,.18)">
+          <sc-raw-select value="{{ fs.value }}" sc-camel-on-change="{{ fs.onChange }}" style="height:100%;border:0;background:transparent;padding:15px 16px;font-size:13px;font-weight:700;color:#201e1d;cursor:pointer;appearance:none;min-width:150px">
+            <sc-for list="{{ fs.options }}" as="o" hint-placeholder-count="3">
+              <option value="{{ o.value }}">{{ o.label }}</option>
+            </sc-for>
+          </sc-raw-select>
+        </div>
+      </sc-for>
+      <button sc-camel-on-click="{{ clearFilters }}" style="background:transparent;border:0;border-right:1px solid rgba(32,30,29,.18);padding:0 18px;font-weight:800;font-size:12.5px;color:#605d5d;cursor:pointer" style-hover="color:#201e1d;background:#eae9e9">Reset</button>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- DIRECTORY -->
+  <sc-if value="{{ isDirectory }}" hint-placeholder-val="{{ true }}">
+  <div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);border-bottom:2px solid rgba(32,30,29,.4)">
+      <sc-for list="{{ liveStats }}" as="st" hint-placeholder-count="4">
+        <div style="padding:20px 22px;border-right:1px solid rgba(32,30,29,.18)">
+          <div style="font-size:28px;font-weight:900;letter-spacing:-.03em;line-height:1">{{ st.value }}</div>
+          <div style="margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#605d5d">{{ st.label }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <sc-raw-table style="width:100%;border-collapse:collapse;font-size:13.5px">
+      <sc-raw-thead>
+        <sc-raw-tr>
+          <sc-for list="{{ columns }}" as="c" hint-placeholder-count="6">
+            <sc-raw-th sc-camel-on-click="{{ c.sort }}" style="text-align:left;font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#605d5d;padding:14px 16px;border-bottom:2px solid rgba(32,30,29,.4);cursor:pointer;white-space:nowrap;user-select:none" style-hover="color:#201e1d">{{ c.label }}{{ c.arrow }}</sc-raw-th>
+          </sc-for>
+        </sc-raw-tr>
+      </sc-raw-thead>
+      <sc-raw-tbody>
+        <sc-for list="{{ rows }}" as="r" hint-placeholder-count="10">
+          <sc-raw-tr sc-camel-on-click="{{ r.open }}" style="cursor:pointer;border-bottom:1px solid rgba(32,30,29,.12);transition:background .1s" style-hover="background:#eae9e9">
+            <sc-raw-td style="padding:14px 16px">
+              <div style="display:flex;align-items:center;gap:9px">
+                <span style="font-weight:800;font-size:14px;letter-spacing:-.01em">{{ r.name }}</span>
+                <span style="font-size:9.5px;font-weight:800;letter-spacing:.08em;padding:2px 6px;background:{{ r.esgBg }};color:{{ r.esgFg }}">{{ r.esgTag }}</span>
+              </div>
+              <div style="font-size:12px;color:#605d5d;margin-top:3px">{{ r.sub }}</div>
+            </sc-raw-td>
+            <sc-raw-td style="padding:14px 16px;color:#444141">{{ r.category }}</sc-raw-td>
+            <sc-raw-td style="padding:14px 16px">
+              <div style="font-weight:600">{{ r.town }}</div>
+              <div style="font-size:11.5px;color:#605d5d">{{ r.gov }}</div>
+            </sc-raw-td>
+            <sc-raw-td style="padding:14px 16px;white-space:nowrap">
+              <div style="font-weight:600">{{ r.contact }}</div>
+              <div style="font-size:11.5px;color:#605d5d">{{ r.phone }}</div>
+            </sc-raw-td>
+            <sc-raw-td style="padding:14px 16px">
+              <span style="display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:800;padding:4px 9px;background:#eae9e9">
+                <span style="width:7px;height:7px;background:{{ r.expColor }};display:block"></span>{{ r.expLabel }}
+              </span>
+            </sc-raw-td>
+            <sc-raw-td style="padding:14px 16px;color:#605d5d;font-size:12.5px;white-space:nowrap">{{ r.meta }}</sc-raw-td>
+          </sc-raw-tr>
+        </sc-for>
+      </sc-raw-tbody>
+    </sc-raw-table>
+
+    <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:64px 20px;text-align:left;border-bottom:2px solid rgba(32,30,29,.4)">
+        <h3 style="margin:0 0 6px;font-size:20px;font-weight:900">Nothing matches those filters.</h3>
+        <p style="color:#605d5d;margin:0">Try resetting one of them, or search a category instead of a name.</p>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ hasMore }}" hint-placeholder-val="{{ false }}">
+      <button sc-camel-on-click="{{ loadMore }}" style="display:flex;align-items:center;justify-content:flex-start;gap:28px;width:100%;background:transparent;border:0;border-bottom:2px solid rgba(32,30,29,.4);padding:20px 16px;font-weight:800;font-size:13.5px;color:#201e1d;cursor:pointer" style-hover="background:#eae9e9">
+        {{ moreLabel }}
+        <svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 4v15M6 13l6 6 6-6"></path></svg>
+      </button>
+    </sc-if>
+  </div>
+  </sc-if>
+
+  <!-- MAP -->
+  <sc-if value="{{ isMap }}" hint-placeholder-val="{{ false }}">
+  <div style="display:grid;grid-template-columns:1fr 300px;border-bottom:2px solid rgba(32,30,29,.4)">
+    <div id="toolMap" style="height:min(700px,74vh);border-right:2px solid rgba(32,30,29,.4)"></div>
+    <div>
+      <div style="padding:22px 22px 18px;border-bottom:1px solid rgba(32,30,29,.18)">
+        <div style="font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#605d5d;margin-bottom:14px">Status</div>
+        <sc-for list="{{ legend }}" as="l" hint-placeholder-count="4">
+          <div style="display:flex;align-items:center;gap:11px;padding:5px 0;font-size:13px;font-weight:600">
+            <span style="width:11px;height:11px;background:{{ l.color }};display:block"></span>{{ l.label }}
+            <span style="margin-left:auto;color:#605d5d;font-weight:700;font-size:12px">{{ l.count }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="padding:22px">
+        <div style="font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#605d5d;margin-bottom:12px">Densest towns</div>
+        <sc-for list="{{ topTowns }}" as="t" hint-placeholder-count="6">
+          <div style="display:flex;align-items:center;gap:12px;padding:6px 0;border-bottom:1px solid rgba(32,30,29,.1)">
+            <span style="font-size:13px;font-weight:700;flex:1">{{ t.name }}</span>
+            <span style="font-size:12px;font-weight:800;color:#7a5c00">{{ t.count }}</span>
+          </div>
+        </sc-for>
+        <p style="font-size:11.5px;color:#605d5d;margin:16px 0 0;text-wrap:pretty">Pins without exact coordinates are placed from their town, district or governorate.</p>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ESG -->
+  <sc-if value="{{ isEsg }}" hint-placeholder-val="{{ false }}">
+  <div>
+    <div style="background:#1F7A4C;padding:22px 0;border-bottom:2px solid rgba(32,30,29,.4);position:relative;overflow:hidden">
+      <div style="position:absolute;inset:0;pointer-events:none;opacity:.16">
+        <sc-for list="{{ leafRow }}" as="lf" hint-placeholder-count="14">
+          <span style="position:absolute;top:{{ lf.top }};left:{{ lf.left }};animation:leafdrift {{ lf.dur }} ease-in-out infinite;animation-delay:{{ lf.delay }}">
+            <svg width="26" height="26" sc-camel-view-box="0 0 24 24" fill="#f3f2f2"><path d="M12 2C7 2 3 6 3 12c0 5.5 4.5 9 9 9 1-4 3-6 7-8 3-1.5 4-5 4-8-5 0-9 2-11 6-1-4 0-7 0-9z"></path></svg>
+          </span>
+        </sc-for>
+      </div>
+      <div style="position:relative;display:flex;align-items:center;gap:14px;padding:0 28px;max-width:1600px;margin:0 auto">
+        <svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="#f3f2f2" stroke-width="2"><path d="M12 2C7 2 3 6 3 12c0 5.5 4.5 9 9 9 1-4 3-6 7-8 3-1.5 4-5 4-8-5 0-9 2-11 6-1-4 0-7 0-9z"></path></svg>
+        <span style="font-size:12.5px;font-weight:800;letter-spacing:.08em;color:#f3f2f2;text-transform:uppercase">{{ esgStats.0.value }} of the register carries verified environmental &amp; social criteria</span>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);border-bottom:2px solid rgba(32,30,29,.4)">
+      <sc-for list="{{ esgStats }}" as="st" hint-placeholder-count="3">
+        <div style="padding:28px 24px;border-right:1px solid rgba(32,30,29,.18);background:{{ st.bg }}">
+          <div style="font-size:40px;font-weight:900;letter-spacing:-.035em;line-height:1;color:{{ st.color }}">{{ st.value }}</div>
+          <div style="margin-top:10px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#605d5d">{{ st.label }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:2px solid rgba(32,30,29,.4)">
+      <div style="padding:34px 32px 40px 0;border-right:2px solid rgba(32,30,29,.4)">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+          <svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="#1F7A4C" stroke-width="2.2"><path d="M12 2C7 2 3 6 3 12c0 5.5 4.5 9 9 9 1-4 3-6 7-8 3-1.5 4-5 4-8-5 0-9 2-11 6-1-4 0-7 0-9z"></path></svg>
+          <h3 style="font-size:20px;font-weight:900;margin:0;letter-spacing:-.02em">ESG coverage by governorate</h3>
+        </div>
+        <p style="font-size:13px;color:#605d5d;margin:0 0 24px">Share of registered suppliers with verified ESG criteria.</p>
+        <sc-for list="{{ esgRows }}" as="g" hint-placeholder-count="8">
+          <div sc-camel-on-mouse-enter="{{ g.hoverOn }}" sc-camel-on-mouse-leave="{{ g.hoverOff }}" style="display:grid;grid-template-columns:150px 1fr 92px;align-items:center;gap:14px;padding:9px 0;border-bottom:1px solid rgba(32,30,29,.12)">
+            <div style="font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px">
+              <svg width="12" height="12" sc-camel-view-box="0 0 24 24" fill="{{ g.leafFill }}" style="transition:transform .2s ease;transform:{{ g.leafScale }}"><path d="M12 2C7 2 3 6 3 12c0 5.5 4.5 9 9 9 1-4 3-6 7-8 3-1.5 4-5 4-8-5 0-9 2-11 6-1-4 0-7 0-9z"></path></svg>
+              {{ g.name }}
+            </div>
+            <div style="height:13px;background:#eae9e9;position:relative;overflow:hidden">
+              <div style="position:absolute;left:0;top:0;bottom:0;width:{{ g.pctW }};background:#1F7A4C;transition:width .3s ease"></div>
+            </div>
+            <div style="font-size:12px;font-weight:700;color:#605d5d">{{ g.detail }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="padding:34px 0 40px 32px">
+        <h3 style="font-size:20px;font-weight:900;margin:0 0 4px;letter-spacing:-.02em">Where the spend sits</h3>
+        <p style="font-size:13px;color:#605d5d;margin:0 0 24px">Ten largest categories, and how they rate.</p>
+        <sc-for list="{{ catRows }}" as="c" hint-placeholder-count="10">
+          <div style="display:grid;grid-template-columns:1fr 84px 60px;align-items:center;gap:14px;padding:9px 0;border-bottom:1px solid rgba(32,30,29,.12)">
+            <div style="font-size:13px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ c.name }}</div>
+            <div style="height:13px;background:#eae9e9;position:relative">
+              <div style="position:absolute;left:0;top:0;bottom:0;width:{{ c.barW }};background:#201e1d"></div>
+            </div>
+            <div style="font-size:12px;font-weight:800;color:#605d5d">{{ c.count }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ADD -->
+  <sc-if value="{{ isAdd }}" hint-placeholder-val="{{ false }}">
+  <div>
+    <sc-if value="{{ locked }}" hint-placeholder-val="{{ true }}">
+      <div style="border-top:2px solid rgba(32,30,29,.4);border-bottom:2px solid rgba(32,30,29,.4);display:grid;grid-template-columns:1fr 1fr">
+        <div style="padding:64px 40px 72px 0;border-right:2px solid rgba(32,30,29,.4)">
+          <h2 style="font-size:30px;font-weight:900;letter-spacing:-.025em;margin:0 0 12px">Team access required</h2>
+          <p style="color:#605d5d;max-width:400px;margin:0">Writing to the register is restricted to procurement staff. Entries are stamped with the author and the date, so every change stays auditable.</p>
+        </div>
+        <div style="padding:64px 0 72px 40px;max-width:420px">
+          <label style="display:block;font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#605d5d;margin-bottom:8px">Sign in</label>
+          <div style="min-height:20px;font-size:12.5px;font-weight:700;color:#ae1800;padding:0 0 8px">{{ authError }}</div>
+          <button sc-camel-on-click="{{ signIn }}" style="display:flex;align-items:center;justify-content:flex-start;gap:14px;width:100%;background:#201e1d;color:#fdd020;border:0;font-weight:800;font-size:14px;padding:16px 20px;cursor:pointer" style-hover="background:#2d2b2b">
+            <svg width="18" height="18" sc-camel-view-box="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.6-6 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 8 3l6-6C34 5.1 29.3 3 24 3 12.4 3 3 12.4 3 24s9.4 21 21 21 21-9.4 21-21c0-1.2-.1-2.4-.4-3.5z"></path><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 15.9 18.9 13 24 13c3.1 0 5.8 1.1 8 3l6-6C34 5.1 29.3 3 24 3 16.3 3 9.7 7.3 6.3 14.7z"></path><path fill="#4CAF50" d="M24 45c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 36.2 26.7 37 24 37c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.6 40.6 16.3 45 24 45z"></path><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.2 5.7l6.2 5.2C40.9 36.6 45 30.9 45 24c0-1.2-.1-2.4-.4-3.5z"></path></svg>
+            {{ signInLabel }}
+          </button>
+          <p style="margin:14px 0 0;font-size:12px;color:#605d5d;font-weight:600">Only the Hulo procurement Google account can write to the register. Everyone else can still browse and search freely.</p>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ unlocked }}" hint-placeholder-val="{{ false }}">
+      <div style="border-top:2px solid rgba(32,30,29,.4)">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0">
+          <sc-for list="{{ formFields }}" as="fld" hint-placeholder-count="9">
+            <div style="padding:20px 24px 22px 0;border-bottom:1px solid rgba(32,30,29,.18);border-right:1px solid rgba(32,30,29,.18)">
+              <label style="display:block;font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#605d5d;margin-bottom:8px">{{ fld.label }}</label>
+              <sc-if value="{{ fld.isSelect }}" hint-placeholder-val="{{ false }}">
+                <sc-raw-select name="{{ fld.key }}" value="{{ fld.value }}" sc-camel-on-change="{{ onField }}" style="width:100%;border:1px solid rgba(32,30,29,.4);background:#f3f2f2;padding:11px 12px;font-size:14px;font-weight:600;color:#201e1d;cursor:pointer">
+                  <sc-for list="{{ fld.options }}" as="o" hint-placeholder-count="3">
+                    <option value="{{ o.value }}">{{ o.label }}</option>
+                  </sc-for>
+                </sc-raw-select>
+              </sc-if>
+              <sc-if value="{{ fld.isText }}" hint-placeholder-val="{{ true }}">
+                <input name="{{ fld.key }}" value="{{ fld.value }}" sc-camel-on-input="{{ onField }}" placeholder="{{ fld.hint }}" style="width:100%;border:1px solid rgba(32,30,29,.4);background:#f3f2f2;padding:11px 12px;font-size:14px;font-weight:600;color:#201e1d">
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+        <!-- DOCUMENTS -->
+        <div style="padding:24px 0 26px;border-bottom:1px solid rgba(32,30,29,.18)">
+          <label style="display:block;font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#605d5d;margin-bottom:12px">Legal documents (PDF)</label>
+          <label style="display:flex;align-items:center;gap:16px;border:1px dashed rgba(32,30,29,.45);background:#eae9e9;padding:18px 20px;cursor:pointer" style-hover="border-color:#fdd020;background:#f3f2f2">
+            <input type="file" accept="application/pdf" multiple="" sc-camel-on-change="{{ onDocs }}" style="display:none">
+            <svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="#201e1d" stroke-width="2"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"></path></svg>
+            <span style="font-size:13.5px;font-weight:800">Attach PDFs: registration, tax certificate, framework agreement</span>
+            <span style="margin-left:auto;font-size:11.5px;color:#605d5d;font-weight:600">Up to 4MB each</span>
+          </label>
+          <sc-for list="{{ pendingDocs }}" as="d" hint-placeholder-count="0">
+            <div style="display:flex;align-items:center;gap:14px;border:1px solid rgba(32,30,29,.28);border-top:0;padding:11px 14px">
+              <svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="#201e1d" stroke-width="2"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"></path><path d="M14 3v5h5"></path></svg>
+              <span style="font-size:13px;font-weight:700;flex:1">{{ d.name }}</span>
+              <span style="font-size:11.5px;color:#605d5d;font-weight:700">{{ d.size }}</span>
+              <button sc-camel-on-click="{{ d.remove }}" style="background:transparent;border:1px solid rgba(32,30,29,.3);padding:4px 9px;font-size:11px;font-weight:800;color:#ae1800;cursor:pointer" style-hover="background:#ffe0d9">Remove</button>
+            </div>
+          </sc-for>
+        </div>
+
+        <!-- MAP PIN -->
+        <div style="padding:24px 0 28px;border-bottom:1px solid rgba(32,30,29,.18)">
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:12px">
+            <label style="display:block;font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#605d5d">Exact location</label>
+            <div style="display:flex;align-items:center;gap:0">
+              <input name="coords" value="{{ coords }}" sc-camel-on-input="{{ onCoords }}" placeholder="lat, lng (e.g. 34.4367, 35.8497)" style="border:1px solid rgba(32,30,29,.4);background:#f3f2f2;padding:10px 12px;font-size:13.5px;font-weight:600;color:#201e1d;min-width:250px">
+              <button sc-camel-on-click="{{ clearPin }}" style="background:transparent;border:1px solid rgba(32,30,29,.4);border-left:0;padding:10px 14px;font-size:12px;font-weight:800;color:#605d5d;cursor:pointer" style-hover="background:#eae9e9;color:#201e1d">Clear pin</button>
+            </div>
+          </div>
+          <div id="pinMap" style="height:300px;border:1px solid rgba(32,30,29,.4)"></div>
+          <p style="margin:10px 0 0;font-size:12.5px;color:#605d5d;font-weight:600">You can pin directly on the map: click anywhere to drop the pin, or drag it to fine-tune. Leave it blank and we'll place the supplier from its town and governorate.</p>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:0;border-bottom:2px solid rgba(32,30,29,.4)">
+          <button sc-camel-on-click="{{ submitForm }}" style="display:flex;align-items:center;justify-content:flex-start;gap:32px;min-width:300px;background:#fdd020;color:#201e1d;border:0;font-weight:800;font-size:14.5px;padding:18px 22px;cursor:pointer" style-hover="background:#201e1d;color:#fdd020">
+            {{ submitLabel }}
+            <svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12h15M13 6l6 6-6 6"></path></svg>
+          </button>
+          <sc-if value="{{ isEditing }}" hint-placeholder-val="{{ false }}">
+            <button sc-camel-on-click="{{ cancelEdit }}" style="background:transparent;border:0;border-right:1px solid rgba(32,30,29,.18);padding:18px 22px;font-weight:800;font-size:13px;color:#605d5d;cursor:pointer" style-hover="color:#201e1d;background:#eae9e9">Cancel edit</button>
+          </sc-if>
+          <button sc-camel-on-click="{{ lock }}" style="background:transparent;border:0;padding:18px 22px;font-weight:800;font-size:13px;color:#605d5d;cursor:pointer" style-hover="color:#201e1d">Sign out</button>
+          <span style="margin-left:auto;padding-right:6px;font-size:12.5px;color:#605d5d;font-weight:600">{{ formNote }}</span>
+        </div>
+
+        <!-- MANAGE ALL SUPPLIERS -->
+        <div style="padding:34px 0 0">
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:18px">
+            <div>
+              <h3 style="font-size:22px;font-weight:900;letter-spacing:-.025em;margin:0 0 4px">All supplier records</h3>
+              <p style="font-size:13px;color:#605d5d;margin:0">Click any row to load it into the form above, edit and save. {{ manageNote }}</p>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;border:1px solid rgba(32,30,29,.4);padding:0 12px;min-width:280px">
+              <svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="#605d5d" stroke-width="2.2"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4.3-4.3"></path></svg>
+              <input value="{{ manageQ }}" sc-camel-on-input="{{ onManageSearch }}" placeholder="Find a record to edit…" style="flex:1;border:0;background:transparent;padding:11px 0;font-size:13.5px;font-weight:600;color:#201e1d">
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1.6fr 1.4fr 1fr .8fr 150px;border-top:2px solid rgba(32,30,29,.4);border-bottom:1px solid rgba(32,30,29,.4)">
+            <sc-for list="{{ manageHeads }}" as="h" hint-placeholder-count="5">
+              <div style="padding:11px 14px 11px 0;font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#605d5d">{{ h }}</div>
+            </sc-for>
+          </div>
+          <sc-for list="{{ manageRows }}" as="m" hint-placeholder-count="8">
+            <div style="display:grid;grid-template-columns:1.6fr 1.4fr 1fr .8fr 150px;align-items:center;border-bottom:1px solid rgba(32,30,29,.12);background:{{ m.bg }}">
+              <div sc-camel-on-click="{{ m.edit }}" style="padding:12px 14px 12px 0;cursor:pointer">
+                <div style="font-weight:800;font-size:13.5px">{{ m.name }}</div>
+                <div style="font-size:11.5px;color:#605d5d">{{ m.sub }}</div>
+              </div>
+              <div sc-camel-on-click="{{ m.edit }}" style="padding:12px 14px 12px 0;font-size:12.5px;color:#444141;cursor:pointer">{{ m.category }}</div>
+              <div sc-camel-on-click="{{ m.edit }}" style="padding:12px 14px 12px 0;font-size:12.5px;cursor:pointer">
+                <div style="font-weight:600">{{ m.town }}</div>
+                <div style="font-size:11px;color:#605d5d">{{ m.district }}</div>
+              </div>
+              <div sc-camel-on-click="{{ m.edit }}" style="padding:12px 14px 12px 0;cursor:pointer">
+                <span style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:800;padding:3px 7px;background:#eae9e9">
+                  <span style="width:6px;height:6px;background:{{ m.expColor }};display:block"></span>{{ m.expLabel }}
+                </span>
+              </div>
+              <div style="display:flex;gap:0;justify-content:flex-start">
+                <button sc-camel-on-click="{{ m.edit }}" style="background:transparent;border:1px solid rgba(32,30,29,.3);padding:7px 12px;font-size:11.5px;font-weight:800;color:#201e1d;cursor:pointer" style-hover="background:#fdd020;border-color:#fdd020">Edit</button>
+                <button sc-camel-on-click="{{ m.remove }}" style="background:transparent;border:1px solid rgba(32,30,29,.3);border-left:0;padding:7px 12px;font-size:11.5px;font-weight:800;color:#ae1800;cursor:pointer" style-hover="background:#ffe0d9;border-color:#ae1800">Delete</button>
+              </div>
+            </div>
+          </sc-for>
+          <sc-if value="{{ manageMore }}" hint-placeholder-val="{{ false }}">
+            <button sc-camel-on-click="{{ manageLoadMore }}" style="display:flex;align-items:center;justify-content:flex-start;gap:24px;width:100%;background:transparent;border:0;border-bottom:2px solid rgba(32,30,29,.4);padding:16px 0;font-weight:800;font-size:13px;color:#201e1d;cursor:pointer" style-hover="background:#eae9e9">{{ manageMoreLabel }}</button>
+          </sc-if>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+  </sc-if>
+
+</div>
+</sc-if>
+
+<!-- ══════════ DETAIL DRAWER ══════════ -->
+<sc-if value="{{ hasDetail }}" hint-placeholder-val="{{ false }}">
+<div sc-camel-on-click="{{ closeDetail }}" style="position:fixed;inset:0;z-index:1000;background:rgba(32,30,29,.5);display:flex;justify-content:flex-end">
+  <div sc-camel-on-click="{{ stop }}" style="width:min(520px,100%);height:100%;background:#f3f2f2;overflow-y:auto;box-shadow:-12px 0 32px rgba(45,43,43,.22);animation:hulodrawer .18s ease both">
+    <div style="background:#201e1d;padding:26px 28px 24px;border-bottom:2px solid #fdd020">
+      <div style="display:flex;justify-content:space-between;gap:16px">
+        <div>
+          <div style="font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#fdd020;margin-bottom:10px">{{ detail.kicker }}</div>
+          <h2 style="font-size:27px;font-weight:900;letter-spacing:-.025em;line-height:1.05;color:#f3f2f2;margin:0 0 8px">{{ detail.name }}</h2>
+          <div style="font-size:13px;color:rgba(243,242,242,.6);font-weight:600">{{ detail.category }}</div>
+        </div>
+        <button sc-camel-on-click="{{ closeDetail }}" style="width:32px;height:32px;flex:none;background:rgba(243,242,242,.1);border:0;color:#f3f2f2;cursor:pointer;font-size:15px;line-height:1" style-hover="background:#fdd020;color:#201e1d">✕</button>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;margin-top:26px;border-top:1px solid rgba(243,242,242,.2)">
+        <sc-for list="{{ detail.stats }}" as="d" hint-placeholder-count="3">
+          <div style="padding:16px 14px 4px 0;border-right:1px solid rgba(243,242,242,.16)">
+            <div style="font-size:22px;font-weight:900;letter-spacing:-.02em;color:{{ d.color }};line-height:1">{{ d.value }}</div>
+            <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(243,242,242,.5);margin-top:7px">{{ d.label }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="padding:0 28px">
+      <sc-for list="{{ detail.fields }}" as="f" hint-placeholder-count="8">
+        <div style="display:flex;justify-content:space-between;gap:18px;padding:12px 0;border-bottom:1px solid rgba(32,30,29,.12);font-size:13.5px">
+          <span style="color:#605d5d;font-weight:700;flex:none">{{ f.k }}</span>
+          <span style="font-weight:600;text-align:right">{{ f.v }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="padding:26px 28px 40px">
+      <div style="font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#605d5d;margin-bottom:14px">Documents on file</div>
+      <sc-for list="{{ detail.docs }}" as="d" hint-placeholder-count="2">
+        <a href="{{ d.href }}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:14px;border:1px solid rgba(32,30,29,.28);padding:12px 14px;margin-bottom:8px;color:#201e1d;text-decoration:none" style-hover="border-color:#fdd020;background:#eae9e9">
+          <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="#201e1d" stroke-width="2"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"></path><path d="M14 3v5h5"></path></svg>
+          <span style="font-size:13px;font-weight:700;flex:1">{{ d.name }}</span>
+          <span style="font-size:11.5px;color:#605d5d;font-weight:700">{{ d.meta }}</span>
+        </a>
+      </sc-for>
+      <sc-if value="{{ detail.noDocs }}" hint-placeholder-val="{{ false }}">
+        <p style="font-size:13px;color:#605d5d;background:#eae9e9;padding:14px;margin:0">No registration or tax documents uploaded yet.</p>
+      </sc-if>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ══════════ COMMAND PALETTE ══════════ -->
+<sc-if value="{{ paletteOpen }}" hint-placeholder-val="{{ false }}">
+<div sc-camel-on-click="{{ closePalette }}" style="position:fixed;inset:0;z-index:1100;background:rgba(32,30,29,.55);display:flex;justify-content:center;align-items:flex-start;padding:12vh 20px 20px">
+  <div sc-camel-on-click="{{ stop }}" style="width:min(680px,100%);background:#f3f2f2;border:2px solid #201e1d;box-shadow:0 24px 60px rgba(45,43,43,.3);animation:hulofade .14s ease both">
+    <div style="display:flex;align-items:center;gap:14px;padding:16px 20px;border-bottom:2px solid #201e1d;background:#201e1d">
+      <svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="#fdd020" stroke-width="2.3"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4.3-4.3"></path></svg>
+      <input value="{{ pq }}" sc-camel-on-input="{{ onPaletteInput }}" sc-camel-on-key-down="{{ onPaletteKey }}" placeholder="Jump to a supplier, a view, a governorate…" ref="{{ paletteRef }}" style="flex:1;border:0;background:transparent;font-size:16px;font-weight:600;color:#f3f2f2;padding:2px 0">
+      <span style="font-family:ui-monospace,monospace;font-size:11px;color:rgba(243,242,242,.45);border:1px solid rgba(243,242,242,.25);padding:2px 6px">ESC</span>
+    </div>
+    <div style="max-height:52vh;overflow-y:auto">
+      <sc-for list="{{ paletteResults }}" as="p" hint-placeholder-count="6">
+        <div sc-camel-on-click="{{ p.run }}" sc-camel-on-mouse-enter="{{ p.hover }}" style="display:flex;align-items:center;gap:16px;padding:13px 20px;border-bottom:1px solid rgba(32,30,29,.12);cursor:pointer;background:{{ p.bg }}">
+          <span style="font-size:9.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#7a5c00;width:74px;flex:none">{{ p.kind }}</span>
+          <span style="font-weight:800;font-size:14px">{{ p.title }}</span>
+          <span style="font-size:12px;color:#605d5d;margin-left:auto;text-align:right">{{ p.hint }}</span>
+        </div>
+      </sc-for>
+      <sc-if value="{{ paletteEmpty }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:32px 20px;color:#605d5d;font-size:13.5px">No match. Try a category: "printing", "medical", "transport".</div>
+      </sc-if>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+
+
+<!-- ══════════ TOAST ══════════ -->
+<sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;left:28px;bottom:28px;z-index:1200;background:#201e1d;color:#fdd020;font-weight:800;font-size:13.5px;padding:15px 22px;border-left:3px solid #fdd020;animation:hulofade .16s ease both">{{ toast }}</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;showRatings&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Directory&quot;},&quot;rowsPerPage&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:40,&quot;min&quot;:10,&quot;max&quot;:150,&quot;step&quot;:10,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Directory&quot;},&quot;mapTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dark&quot;,&quot;light&quot;],&quot;default&quot;:&quot;dark&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Landing&quot;}}">
+const SUPPLIER_DATA = [{"id":"s0","subCategory":"Audit","mainCategory":"Services - Other Consultancies","name":"Deloitte","contactName":"Ghassan El kadi","contactNumber":"01-364700","email":"gelkadi@deloitte.com","location":"Beirut","address":"Beirut","district":"Beirut","governorate":"Mount Lebanon","localSupplier":true,"experience":"good","esgVerified":true,"lat":33.89544,"lng":35.50365,"reviews":8,"rating":4.7,"docs":2,"since":2022},{"id":"s1","subCategory":"Car Rental","mainCategory":"Vehicle Rental","name":"AVIS","contactName":"Bachir Mrad","contactNumber":"01-762634 / 03-021721","email":"bachir.mrad@avislebanon.com","location":"Beirut","address":"Beirut","district":"Beirut","governorate":"Beirut","localSupplier":true,"experience":"neutral","esgVerified":false,"lat":33.89254,"lng":35.50033,"reviews":6,"rating":3.4,"docs":0,"since":2021},{"id":"s2","subCategory":"Energy Equipment / Electrical / Power Supply","mainCategory":"Electrical Equipment","name":"S.A.D","contactName":"","contactNumber":"70-689157","email":"","location":"Beirut","address":"Beirut","district":"Beirut","governorate":"Beirut","localSupplier":true,"experience":"bad","esgVerified":false,"lat":33.8943,"lng":35.50251,"reviews":8,"rating":2.2,"docs":0,"since":2022},{"id":"s3","subCategory":"Generators","mainCategory":"Electrical Equipment","name":"Saccal industries","contactName":"Bassem Rawas","contactNumber":"01-700370","email":"bassamrawas@saccal.com","location":"Beirut","address":"Beirut","district":"Beirut","governorate":"Beirut","localSupplier":true,"experience":"no_experience","esgVerified":true,"lat":33.88538,"lng":35.49345,"reviews":0,"rating":null,"docs":1,"since":2016},{"id":"s4","subCategory":"OFF","mainCategory":"Services - Other Consultancies","name":"LKDI S.A.L.","contactName":"RABIH Murad","contactNumber":"70-047005","email":"info@LKDIGroup.com","location":"Beirut","address":"VERDUN ABDALLH AL KSHNOUK STREET, FLAYFEL BLDG. BEIRUT","district":"Beirut","governorate":"Beirut","localSupplier":true,"experience":"no_experience","esgVerified":true,"lat":33.90039,"lng":35.50859,"reviews":0,"rating":null,"docs":0,"since":2024},{"id":"s5","subCategory":"IT Equipment","mainCategory":"IT Equipment","name":"TRACCS Lebanon Company","contactName":"","contactNumber":"","email":"","location":"Beirut","address":"Beirut","district":"Beirut","governorate":"Beirut","localSupplier":true,"experience":"no_experience","esgVerified":true,"lat":33.89805,"lng":35.50598,"reviews":0,"rating":null,"docs":0,"since":2022},{"id":"s6","subCategory":"Pharmacy","mainCategory":"Medical Drugs and equipment","name":"Prime Pharma","contactName":"","contactNumber":"","email":"info@primepharma.com.lb","location":"Beirut","address":"Beirut","district":"Beirut","governorate":"Beirut","localSupplier":true,"experience":"good","esgVerified":false,"lat":33.88557,"lng":35.49378,"reviews":12,"rating":4.9,"docs":1,"since":2024},{"id":"s7","subCategory":"Consulting","mainCategory":"Services - Other Consultancies","name":"Lorient Le Jour","contactName":"Neila Doufreige","contactNumber":"009615454201","email":"elianedaccache@lorientlejour.com","location":"Beirut","address":"Beirut","district":"Beirut","governorate":"Beirut","localSupplier":true,"experience":"bad","esgVerified":false,"lat":33.89309,"lng":35.50102,"reviews":7,"rating":2.1,"docs":2,"since":2021},{"id":"s8","subCategory":"Videography and video editing","mainCategory":"Other Services","name":"Mohamad Zock","contactName":"Mohamad Zock","contactNumber":"0096171633658","email":"mhmdzock@gmail.com","location":"Beirut","address":"Beirut","district":"Beirut","governorate":"Beirut","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":33.89723,"lng":35.50543,"reviews":0,"rating":null,"docs":0,"since":2023},{"id":"s9","subCategory":"Hotel","mainCategory":"Building Rental","name":"Lancaster Tamar Hotel","contactName":"Sarah","contactNumber":"05-458000 / 81-727371","email":"Mayssa.Jouni@lancastertamar.com","location":"Beirut","address":"Beirut","district":"Beirut","governorate":"Beirut","localSupplier":true,"experience":"good","esgVerified":true,"lat":33.88897,"lng":35.4969,"reviews":4,"rating":4.4,"docs":1,"since":2019},{"id":"s10","subCategory":"Accommodation and Venue Bookings","mainCategory":"Building Rental","name":"Mozart Hotel","contactName":"","contactNumber":"01-345757","email":"","location":"Qobaiyat","address":"Qobaiyat","district":"Beirut","governorate":"Beirut","localSupplier":true,"experience":"good","esgVerified":false,"lat":34.58757,"lng":36.28564,"reviews":6,"rating":4.6,"docs":0,"since":2021},{"id":"s11","subCategory":"Transcription services","mainCategory":"Translation services","name":"Beit El Tarjama","contactName":"Eliana Abou Tayeh","contactNumber":"+9611424415","email":"aboutayehtrans@gmail.com","location":"Beirut","address":"Beirut, Badaro facing Mcdonald's, Azzi bldg, GF","district":"Beirut","governorate":"Beirut","localSupplier":true,"experience":"good","esgVerified":true,"lat":33.88821,"lng":35.49601,"reviews":2,"rating":4.3,"docs":0,"since":2017},{"id":"s12","subCategory":"NGO","mainCategory":"Other Services","name":"Handicap Int.","contactName":"Joe Rahme","contactNumber":"76-408970","email":"","location":"Beirut","address":"Beirut","district":"Beirut","governorate":"Beirut","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":33.89591,"lng":35.50371,"reviews":0,"rating":null,"docs":1,"since":2022},{"id":"s13","subCategory":"Catheter","mainCategory":"Medical Drugs and equipment","name":"CARETEK - Ashrafieh","contactName":"Rami Entaious","contactNumber":"03/492975","email":"","location":"Achrafiye","address":"Achrafiye","district":"Beirut","governorate":"Beirut","localSupplier":true,"experience":"no_experience","esgVerified":true,"lat":33.88893,"lng":35.52013,"reviews":0,"rating":null,"docs":0,"since":2021},{"id":"s14","subCategory":"Customs Clearance & Freight Forwarding","mainCategory":"Customs Service","name":"CMA CGM Logistics","contactName":"Rodolphe Saadeh","contactNumber":"","email":"","location":"Beirut","address":"Beirut","district":"Beirut","governorate":"Beirut","localSupplier":true,"experience":"good","esgVerified":true,"lat":33.90137,"lng":35.50916,"reviews":10,"rating":4.9,"docs":2,"since":2024},{"id":"s15","subCategory":"stationary","mainCategory":"Office Stationary","name":"Diabco","contactName":"Ali Diab / Hussien diab","contactNumber":"01-739439/40 / 70-942938","email":"diabcostationery@gmail.com","location":"El Hamra","address":"Hamra","district":"Beirut","governorate":"Beirut","localSupplier":true,"experience":"neutral","esgVerified":false,"lat":33.89765,"lng":35.48438,"reviews":6,"rating":3.4,"docs":1,"since":2020},{"id":"s16","subCategory":"Medical","mainCategory":"Medical Drugs and equipment","name":"International Logistics","contactName":"Dima Charafeddine","contactNumber":"00961727646","email":"bassel@groupils.com","location":"Beirut","address":"Beirut","district":"Beirut","governorate":"Beirut","localSupplier":true,"experience":"good","esgVerified":false,"lat":33.89784,"lng":35.50591,"reviews":10,"rating":4.8,"docs":0,"since":2023},{"id":"s17","subCategory":"Medical Equipment","mainCategory":"Medical Drugs and equipment","name":"Machmouchi Pharmacy","contactName":"","contactNumber":"03-227626","email":"info@machmouchiph.com","location":"Mazraa","address":"Mazraa","district":"Beirut","governorate":"Beirut","localSupplier":true,"experience":"neutral","esgVerified":true,"lat":33.86278,"lng":35.48835,"reviews":12,"rating":3.7,"docs":0,"since":2025},{"id":"s18","subCategory":"Building","mainCategory":"Construction Service","name":"Saba Makhlouf Establishment for Trading and Contracting SARL","contactName":"Hawchab Jebraeil Makhlouf","contactNumber":"009613599577","email":"cynthianaim@sabamakhlouf,com","location":"Beirut","address":"Beirut","district":"Beirut","governorate":"Beirut","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":33.89404,"lng":35.50225,"reviews":0,"rating":null,"docs":1,"since":2021},{"id":"s19","subCategory":"Medical Equipment","mainCategory":"Medical Drugs and equipment","name":"Lab Care (HIV test kits)","contactName":"Oussama Shbealo","contactNumber":"03-246796","email":"marwan_chbaklo@labcare.org","location":"Beirut","address":"Sakiat El- Janzeir, Riad Street, Itani Bldg","district":"Beirut","governorate":"Beirut","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":33.89294,"lng":35.50101,"reviews":0,"rating":null,"docs":0,"since":2020},{"id":"s20","subCategory":"COM","mainCategory":"IT Equipment","name":"IMAGE SYSTEMS S.A.L.","contactName":"Eddy Helayel","contactNumber":"+961 3 133737","email":"e.helayel@imagesys-canon.com","location":"Corniche El Naher","address":"BEIRUT ACHRAFEIH, CORNICHE EL NAHR ST. 460 BLDG.","district":"Beirut","governorate":"Beirut","localSupplier":true,"experience":"neutral","esgVerified":false,"lat":33.9,"lng":35.53896,"reviews":1,"rating":3.1,"docs":0,"since":2016},{"id":"s21","subCategory":"Quality Assurance and certification","mainCategory":"Services - Other Consultancies","name":"SGS","contactName":"Antoine Abdel Ahad","contactNumber":"03-263183","email":"antoine.abdelahad@sgs.com","location":"Beirut","address":"Beirut","district":"Beirut","governorate":"Beirut","localSupplier":true,"experience":"good","esgVerified":false,"lat":33.89544,"lng":35.50351,"reviews":8,"rating":4.7,"docs":2,"since":2022},{"id":"s22","subCategory":"Office Supplies / Printing","mainCategory":"Printing","name":"Doculand SARL","contactName":"Hanadi Abdulbaki","contactNumber":"+961 1 740 357 ext 105","email":"info@doculand.com.lb sales@doculand.com.lb","location":"Beirut","address":"Beirut","district":"Beirut","governorate":"Beirut","localSupplier":true,"experience":"neutral","esgVerified":false,"lat":33.89301,"lng":35.50121,"reviews":7,"rating":3.4,"docs":0,"since":2021},{"id":"s23","subCategory":"STA","mainCategory":"Office Stationary","name":"MALIKS BOOKSHOP","contactName":"ALI AYOUB","contactNumber":"01-425808","email":"achrafieh@maliks.com","location":"Achrafiye","address":"ASHRAFEIH, Beirut","district":"Beirut","governorate":"Beirut","localSupplier":true,"experience":"neutral","esgVerified":false,"lat":33.8815,"lng":35.51283,"reviews":3,"rating":3.2,"docs":0,"since":2017},{"id":"s24","subCategory":"LOG","mainCategory":"Building Rental","name":"MAURICE ALBERT MASSAAD","contactName":"MAURICE MASSAAD","contactNumber":"03-347620","email":"maurice.massaad@gmail.com","location":"Achrafiye","address":"BEIRUT, ACHRAFIEH GEORGE TABET STREET 6TH FLOOR","district":"Beirut","governorate":"Beirut","localSupplier":true,"experience":"good","esgVerified":false,"lat":33.88528,"lng":35.51689,"reviews":5,"rating":4.5,"docs":1,"since":2020},{"id":"s25","subCategory":"Home Appliances","mainCategory":"Office/ House Items (cleaning, food, equipment…)","name":"ANF","contactName":"ANF Ahmad Naji Fares","contactNumber":"","email":"","location":"Beirut","address":"Beirut","district":"Beirut","governorate":"Beirut","localSupplier":true,"experience":"neutral","esgVerified":false,"lat":33.89375,"lng":35.50182,"reviews":7,"rating":3.4,"docs":0,"since":2021},{"id":"s26","subCategory":"COM","mainCategory":"Multimedia - Graphic Design","name":"YOUSSEF MOHAMMAD HAMMOUD","contactName":"YOUSSEF MOHAMMAD HAMMOUD","contactNumber":"","email":"joehammoudacf@gmail.com","location":"Raoucheh","address":"Beirut, Raouche, Australia Str. Shabandar Bldg. 3rd Flr.","district":"Beirut","governorate":"Beirut","localSupplier":true,"experience":"good","esgVerified":true,"lat":33.88926,"lng":35.47523,"reviews":5,"rating":4.5,"docs":0,"since":2019},{"id":"s27","subCategory":"","mainCategory":"Other Services","name":"RAMCO TRADING AND Contracting","contactName":"MONA WAZZAN","contactNumber":"1354636","email":"ramco@ramcoeng.com","location":"Beirut","address":"BEIRUT","district":"Beirut","governorate":"Beirut","localSupplier":true,"experience":"neutral","esgVerified":false,"lat":33.89372,"lng":35.50165,"reviews":7,"rating":3.4,"docs":1,"since":2021},{"id":"s28","subCategory":"LOG","mainCategory":"Office/ House Items (cleaning, food, equipment…)","name":"Elias Gerges Bou Nehme","contactName":"Elias Gerges Bou Nehme","contactNumber":"03-729294","email":"","location":"Mtaileb","address":"Street 53, Building 11, GF, Mtayleb","district":"El Meten","governorate":"Mount Lebanon","localSupplier":true,"experience":"good","esgVerified":false,"lat":33.92087,"lng":35.60988,"reviews":7,"rating":4.7,"docs":2,"since":2021},{"id":"s29","subCategory":"Data Collection services","mainCategory":"Other Services","name":"Qualisus SAL","contactName":"Jessica Moujabber","contactNumber":"","email":"","location":"Jbail","address":"Jbeil, Qartaboun highway, next to spinneys, Garden 1111, Bloc B, 5th floor","district":"Jbeil","governorate":"Mount Lebanon","localSupplier":true,"experience":"bad","esgVerified":false,"lat":34.12936,"lng":35.65726,"reviews":1,"rating":1.8,"docs":0,"since":2016},{"id":"s30","subCategory":"Sanitary products","mainCategory":"Sanitation items","name":"Taweet Kasparian Institute","contactName":"Taweet Kasperian","contactNumber":"+9611247807","email":"","location":"borj hammoud","address":"Lebanon/Borj Hammoud,Armenian Residents","district":"El Meten","governorate":"Mount Lebanon","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":33.88718,"lng":35.53425,"reviews":0,"rating":null,"docs":1,"since":2019},{"id":"s31","subCategory":"IT Equipment","mainCategory":"IT Equipment","name":"Teletrade -Multimedia Megastores","contactName":"Joseph Wakim","contactNumber":"04-723523","email":"info@teletrade.com.lb","location":"Jall Ed Dib","address":"Jall Ed Dib","district":"El Meten","governorate":"Mount Lebanon","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":33.95064,"lng":35.61477,"reviews":0,"rating":null,"docs":0,"since":2024},{"id":"s32","subCategory":"Audit","mainCategory":"Services - Other Consultancies","name":"Nahabia Consultancy","contactName":"","contactNumber":"01-492073 / 03-681085","email":"info@nahabia-consultancy.com","location":"Beirut","address":"Beirut","district":"Beirut","governorate":"Mount Lebanon","localSupplier":true,"experience":"neutral","esgVerified":false,"lat":33.8942,"lng":35.502,"reviews":6,"rating":3.4,"docs":0,"since":2020},{"id":"s33","subCategory":"LOG","mainCategory":"Insurance services","name":"ADIR INSURANCE","contactName":"Marian Aoun","contactNumber":"01 256290","email":"maraoun@adirinsurance.com","location":"Daoura","address":"DORA, METN, LEBANON","district":"Aley","governorate":"Mount Lebanon","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":33.90988,"lng":35.54421,"reviews":0,"rating":null,"docs":1,"since":2018},{"id":"s34","subCategory":"Medical","mainCategory":"Medical Drugs and equipment","name":"Team Pharma sal","contactName":"Hanadi Salem","contactNumber":"009613438008","email":"phrabih@hotmail.com","location":"Jbail","address":"Jbail","district":"Jbeil","governorate":"Mount Lebanon","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":34.12875,"lng":35.65706,"reviews":0,"rating":null,"docs":0,"since":2025},{"id":"s35","subCategory":"Food Supplies (Alimentation)","mainCategory":"Food - Dry Food","name":"Carrefour","contactName":"","contactNumber":"","email":"","location":"Daoura","address":"Daoura","district":"Aley","governorate":"Mount Lebanon","localSupplier":true,"experience":"bad","esgVerified":false,"lat":33.9207,"lng":35.55517,"reviews":10,"rating":2.3,"docs":2,"since":2023},{"id":"s36","subCategory":"Utilities / Water","mainCategory":"Office/ House Items (cleaning, food, equipment…)","name":"Sannine Water (Lifco Alrawabi Trading)","contactName":"","contactNumber":"+961 71 601 603 Hassan","email":"","location":"Wata Amaret Chalhoub","address":"Wata Amaret Chalhoub","district":"El Meten","governorate":"Mount Lebanon","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":33.87929,"lng":35.54356,"reviews":0,"rating":null,"docs":1,"since":2023},{"id":"s37","subCategory":"Food Supplies (Alimentation)","mainCategory":"Food - Dry Food","name":"Le Charcutier (Aoun)","contactName":"","contactNumber":"","email":"","location":"Er Rabie","address":"Er Rabie","district":"El Meten","governorate":"Mount Lebanon","localSupplier":true,"experience":"bad","esgVerified":false,"lat":33.91566,"lng":35.58233,"reviews":5,"rating":2,"docs":0,"since":2019},{"id":"s38","subCategory":"Library","mainCategory":"Office Stationary","name":"Sheito","contactName":"Imad Sheito","contactNumber":"01-278500/03-237188","email":"","location":"Chiayah","address":"Chiayah","district":"Baabda","governorate":"Mount Lebanon","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":33.84246,"lng":35.50906,"reviews":0,"rating":null,"docs":0,"since":2017},{"id":"s39","subCategory":"Stationary framework","mainCategory":"Office Stationary","name":"Librairie Halim","contactName":"Michel Khoury","contactNumber":"+9611261325","email":"lh@librairiehalim.com","location":"Baouchriye","address":"Lebanon/Beirut/Bauchrieh/St Joseph Hospital st","district":"El Meten","governorate":"Mount Lebanon","localSupplier":true,"experience":"good","esgVerified":true,"lat":33.8966,"lng":35.56323,"reviews":10,"rating":4.8,"docs":1,"since":2023},{"id":"s40","subCategory":"General Trading","mainCategory":"Other items","name":"Rays Adventure","contactName":"Joseph asmar","contactNumber":"00961 76 383 333","email":"rays.adventure.73@gmail.com","location":"Antelias","address":"Antelias","district":"El Meten","governorate":"Mount Lebanon","localSupplier":true,"experience":"good","esgVerified":false,"lat":33.91884,"lng":35.5905,"reviews":1,"rating":4.3,"docs":0,"since":2017},{"id":"s41","subCategory":"Taxi Services","mainCategory":"Transport","name":"Red Taxi","contactName":"","contactNumber":"","email":"","location":"Sinn El Fil","address":"Sinn El Fil","district":"El Meten","governorate":"Mount Lebanon","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":33.8749,"lng":35.54017,"reviews":0,"rating":null,"docs":0,"since":2019},{"id":"s42","subCategory":"Printing","mainCategory":"Printing","name":"Professional Printing Solutions","contactName":"Kamal Habib","contactNumber":"03 623 147","email":"Kamal Habib <proprintingsol@gmail.com>","location":"Dekouane","address":"Dekouane","district":"El Meten","governorate":"Mount Lebanon","localSupplier":true,"experience":"neutral","esgVerified":false,"lat":33.89353,"lng":35.55017,"reviews":5,"rating":3.3,"docs":2,"since":2019},{"id":"s43","subCategory":"Building Upgrades","mainCategory":"Building Repair and Maintenance","name":"Marwan Mahmoud Mrad","contactName":"Marwan Mahmoud Mrad","contactNumber":"","email":"","location":"Chhim","address":"Lebanon/Shim","district":"Chouf","governorate":"Mount Lebanon","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":33.62038,"lng":35.47017,"reviews":0,"rating":null,"docs":0,"since":2023},{"id":"s44","subCategory":"Medical Equipment","mainCategory":"Medical Drugs and equipment","name":"Novacare S.A.R.L","contactName":"Rawad Khoury","contactNumber":"+961 (0) 3 387 287","email":"nova.care@outlook.com","location":"Baabda","address":"Baabda","district":"Baabda","governorate":"Mount Lebanon","localSupplier":true,"experience":"neutral","esgVerified":false,"lat":33.83706,"lng":35.54433,"reviews":7,"rating":3.5,"docs":0,"since":2021},{"id":"s45","subCategory":"Cars Accessories","mainCategory":"Vehicle Accessories & spare parts","name":"Car Kit","contactName":"Ibrahim","contactNumber":"03 485 486","email":"","location":"Haret Hraik","address":"Haret Hraik","district":"Baabda","governorate":"Mount Lebanon","localSupplier":true,"experience":"good","esgVerified":false,"lat":33.85607,"lng":35.51927,"reviews":12,"rating":4.9,"docs":1,"since":2016},{"id":"s46","subCategory":"Social Development Center Director Wardenieh","mainCategory":"Other Services","name":"Inaya El Hajj","contactName":"Inaya El Hajj","contactNumber":"","email":"","location":"Quardaniye","address":"Lebanon/Wardenieh","district":"Chouf","governorate":"Mount Lebanon","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":34.44811,"lng":36.05804,"reviews":0,"rating":null,"docs":0,"since":2024},{"id":"s47","subCategory":"Contractor","mainCategory":"Construction Service","name":"ISOPACK","contactName":"Roger and Alain Stephan","contactNumber":"09-910646 / 09-933186","email":"isopack@inco.com.lb","location":"Sahel Aalma","address":"1st Floor, F. Stephan Building, Main Road, Sahel Alma, Lebanon","district":"Kesrwane","governorate":"Mount Lebanon","localSupplier":true,"experience":"good","esgVerified":false,"lat":34.00672,"lng":35.64416,"reviews":4,"rating":4.5,"docs":0,"since":2019},{"id":"s48","subCategory":"Food Boxes","mainCategory":"Food - Rations","name":"Al Moukhtar company","contactName":"Hamad Hachem El Moussawi","contactNumber":"+9611840173","email":"amerabdallah229@gmail.com","location":"borj el Brajne","address":"Mount lebanon, Baabda, Bourj Barajne, Rweiss street, Building 2007","district":"Baabda","governorate":"Mount Lebanon","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":33.85673,"lng":35.5046,"reviews":0,"rating":null,"docs":1,"since":2016},{"id":"s49","subCategory":"Printing","mainCategory":"Printing","name":"Algraphica","contactName":"Alain/Rita","contactNumber":"04-719566-03-399733","email":"rita@algraphica.com","location":"Jall Ed Dib","address":"Al Majzoub Abou Habib bldg.","district":"El Meten","governorate":"Mount Lebanon","localSupplier":true,"experience":"no_experience","esgVerified":true,"lat":33.9377,"lng":35.60183,"reviews":0,"rating":null,"docs":2,"since":2018},{"id":"s50","subCategory":"First Aid Training","mainCategory":"Training Services","name":"Lebanese Red Cross","contactName":"Roger Bafitos","contactNumber":"76-069888","email":"","location":"Tripoli","address":"Tripoli 200 street, in front of Malaab high school","district":"Tripoli","governorate":"North","localSupplier":true,"experience":"neutral","esgVerified":false,"lat":34.42918,"lng":35.84239,"reviews":1,"rating":3.1,"docs":0,"since":2016},{"id":"s51","subCategory":"Contracting","mainCategory":"Construction Service","name":"AL HASSAN COMPANY","contactName":"MOHAMAD FAYSAL BEIK","contactNumber":"3540088","email":"mo_beik@hotmail.com","location":"El Minie","address":"Dannieh","district":"El Minieh-Dennie","governorate":"North","localSupplier":true,"experience":"no_experience","esgVerified":true,"lat":34.45172,"lng":35.94033,"reviews":0,"rating":null,"docs":1,"since":2022},{"id":"s52","subCategory":"Supply of Internet Service Providers","mainCategory":"IT Internet Fees","name":"Bitar Net","contactName":"Naim Bitar","contactNumber":"03/302586","email":"bitarco@hotmail.com","location":"Tripoli","address":"Tripoli","district":"Tripoli","governorate":"North","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":34.43463,"lng":35.8477,"reviews":0,"rating":null,"docs":0,"since":2020},{"id":"s53","subCategory":"Oil","mainCategory":"Fuel & Gas","name":"Petrotrade(Hraysheh)","contactName":"","contactNumber":"06-400184","email":"","location":"Tripoli","address":"Tripoli","district":"Tripoli","governorate":"North","localSupplier":true,"experience":"good","esgVerified":false,"lat":34.44379,"lng":35.85686,"reviews":10,"rating":4.8,"docs":0,"since":2024},{"id":"s54","subCategory":"Toys","mainCategory":"Toys","name":"Mohammad Abdallah","contactName":"Mohammad Abdallah","contactNumber":"03-359349","email":"","location":"El Mina","address":"facing kadisha, Mina, Tripoli","district":"Tripoli","governorate":"North","localSupplier":true,"experience":"bad","esgVerified":true,"lat":34.45451,"lng":35.82911,"reviews":11,"rating":2.4,"docs":1,"since":2025},{"id":"s55","subCategory":"Keys","mainCategory":"Tools and Hardware","name":"Kalamouni for trading","contactName":"kalamouni for trading","contactNumber":"06201263","email":"","location":"Tripoli","address":"TRIPOLI","district":"Tripoli","governorate":"North","localSupplier":true,"experience":"neutral","esgVerified":true,"lat":34.43386,"lng":35.84665,"reviews":5,"rating":3.3,"docs":0,"since":2020},{"id":"s56","subCategory":"","mainCategory":"Other Services","name":"TSG","contactName":"","contactNumber":"","email":"","location":"Tripoli","address":"TRIPOLI","district":"Tripoli","governorate":"North","localSupplier":true,"experience":"neutral","esgVerified":false,"lat":34.44356,"lng":35.85676,"reviews":10,"rating":3.6,"docs":2,"since":2024},{"id":"s57","subCategory":"Transportation (Truck)","mainCategory":"Transport","name":"HANOUN","contactName":"","contactNumber":"03 317345","email":"","location":"Tripoli","address":"TRIPOLI","district":"Tripoli","governorate":"North","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":34.43481,"lng":35.84761,"reviews":0,"rating":null,"docs":1,"since":2020},{"id":"s58","subCategory":"FOO","mainCategory":"Food - Dry Food","name":"Ahdab Commuting & Trading Company (ACTC)","contactName":"Aoni Ahdab","contactNumber":"+961 71 200908","email":"aoni@ahdab.org","location":"Tal","address":"Tal","district":"Tripoli","governorate":"North","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":34.53276,"lng":36.09283,"reviews":0,"rating":null,"docs":0,"since":2016},{"id":"s59","subCategory":"Wood","mainCategory":"Construction Service","name":"Al Shadrawi for Traiding","contactName":"","contactNumber":"06-845535","email":"","location":"Tripoli","address":"Tripoli","district":"Tripoli","governorate":"North","localSupplier":true,"experience":"no_experience","esgVerified":true,"lat":34.43839,"lng":35.85146,"reviews":0,"rating":null,"docs":0,"since":2021},{"id":"s60","subCategory":"Building","mainCategory":"Construction Service","name":"AWAD","contactName":"Mohamad Awad","contactNumber":"0096176703536","email":"awad.est@outlook.com","location":"Tripoli","address":"Tripoli","district":"Tripoli","governorate":"North","localSupplier":true,"experience":"neutral","esgVerified":true,"lat":34.43207,"lng":35.84514,"reviews":4,"rating":3.3,"docs":1,"since":2018},{"id":"s61","subCategory":"Renting chairs","mainCategory":"Other items","name":"Haidar","contactName":"Haidar","contactNumber":"03-201823","email":"","location":"El Beddaoui","address":"El Beddaoui","district":"El Minieh-Dennie","governorate":"North","localSupplier":true,"experience":"neutral","esgVerified":false,"lat":34.46847,"lng":35.85573,"reviews":12,"rating":3.7,"docs":0,"since":2025},{"id":"s62","subCategory":"IT Maintenance","mainCategory":"IT Services","name":"Technology Services Group","contactName":"Khodor Ibrahim","contactNumber":"009616444195","email":"Khodoralibrahim@yahoo.com","location":"Tripoli","address":"Tripoli","district":"Tripoli","governorate":"North","localSupplier":true,"experience":"neutral","esgVerified":false,"lat":34.43606,"lng":35.84886,"reviews":7,"rating":3.4,"docs":0,"since":2020},{"id":"s63","subCategory":"Coffee machine","mainCategory":"Food - Dry Food","name":"RUBBERMAID","contactName":"Assad","contactNumber":"","email":"","location":"Bab Al Ramel","address":"Bab Al Ramel","district":"Tripoli","governorate":"North","localSupplier":true,"experience":"neutral","esgVerified":true,"lat":34.43574,"lng":35.84391,"reviews":4,"rating":3.3,"docs":2,"since":2018},{"id":"s64","subCategory":"Consultancy - Mid Term Evaluation","mainCategory":"Services - Other Consultancies","name":"360 Consulting S.A.R.L.","contactName":"Kassem El Saddik Rachelle Saadeh","contactNumber":"+1 (613) 400 1042 [Kassem] (961) 3 704663 [Rachelle]","email":"info@360consultingagency.com Kassem.ElSaddik@360consultingagency.com Rachelle.saadeh@360consultingagency.com","location":"Tripoli","address":"Tripoli","district":"Tripoli","governorate":"North","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":34.43594,"lng":35.84901,"reviews":0,"rating":null,"docs":0,"since":2019},{"id":"s65","subCategory":"Contracting","mainCategory":"Construction Service","name":"RAFT ENGINEERING AND Contracting","contactName":"JEAN BARHOUN","contactNumber":"3754731","email":"INFO@RAFT-ENG.COM","location":"Batroun","address":"BATROUN","district":"El Batroun","governorate":"North","localSupplier":true,"experience":"good","esgVerified":true,"lat":34.2483,"lng":35.6509,"reviews":3,"rating":4.4,"docs":0,"since":2018},{"id":"s66","subCategory":"kitchen items","mainCategory":"Furniture","name":"AL HELWEH","contactName":"HAYSSAM AL HELWEH","contactNumber":"06 430694","email":"","location":"Tripoli","address":"TRIPOLI","district":"Tripoli","governorate":"North","localSupplier":true,"experience":"bad","esgVerified":true,"lat":34.42946,"lng":35.8424,"reviews":3,"rating":1.8,"docs":1,"since":2018},{"id":"s67","subCategory":"TV","mainCategory":"Furniture","name":"HADDAD SET","contactName":"FIDA HIJAZI","contactNumber":"03260636","email":"","location":"Tripoli","address":"TRIPOLI","district":"Tripoli","governorate":"North","localSupplier":true,"experience":"neutral","esgVerified":true,"lat":34.44281,"lng":35.85574,"reviews":11,"rating":3.7,"docs":0,"since":2024},{"id":"s68","subCategory":"Transportation (pick ups)","mainCategory":"Transport","name":"Saleh Mawhed","contactName":"Saleh Mawhed","contactNumber":"70-118449","email":"","location":"Tripoli","address":"Tripoli","district":"Tripoli","governorate":"North","localSupplier":true,"experience":"good","esgVerified":true,"lat":34.43977,"lng":35.85256,"reviews":8,"rating":4.7,"docs":0,"since":2022},{"id":"s69","subCategory":"Stationery","mainCategory":"Office Stationary","name":"AL MAKTABA","contactName":"ABED AL ILLAH","contactNumber":"03 826317//06210274275","email":"","location":"Tripoli","address":"TRIPOLI","district":"Tripoli","governorate":"North","localSupplier":true,"experience":"good","esgVerified":false,"lat":34.43795,"lng":35.85115,"reviews":8,"rating":4.7,"docs":1,"since":2021},{"id":"s70","subCategory":"Contracting","mainCategory":"Construction Service","name":"AMIR FOR SERVICES","contactName":"BILAL SLEIMAN","contactNumber":"70614616","email":"dr.khaledsleiman@gmail.com","location":"Tripoli","address":"TRIPOLI","district":"Tripoli","governorate":"North","localSupplier":true,"experience":"bad","esgVerified":false,"lat":34.44239,"lng":35.8556,"reviews":10,"rating":2.3,"docs":2,"since":2023},{"id":"s71","subCategory":"Mattress","mainCategory":"Office / House Equipment","name":"FAP","contactName":"toni salameh","contactNumber":"03/751063","email":"","location":"Tripoli","address":"Tripoli","district":"Tripoli","governorate":"North","localSupplier":true,"experience":"bad","esgVerified":true,"lat":34.42983,"lng":35.8429,"reviews":3,"rating":1.9,"docs":0,"since":2017},{"id":"s72","subCategory":"Hardware Store","mainCategory":"Tools and Hardware","name":"Bodamo","contactName":"Nassim El Debleis","contactNumber":"009616204035","email":"","location":"Akkar","address":"Akkar","district":"Akkar","governorate":"Akkar","localSupplier":true,"experience":"bad","esgVerified":false,"lat":34.5342,"lng":36.07341,"reviews":3,"rating":1.9,"docs":1,"since":2017},{"id":"s73","subCategory":"Contracting","mainCategory":"Construction Service","name":"MOHAMAD ALI FOR TRADING","contactName":"Mohamad Ali","contactNumber":"71/326136","email":"mohamad_abo.omar.1989@hotmail.com","location":"Nahr El Bared","address":"NAHER AL BARED","district":"Akkar","governorate":"Akkar","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":34.47249,"lng":35.93588,"reviews":0,"rating":null,"docs":0,"since":2019},{"id":"s74","subCategory":"Contracting","mainCategory":"Construction Service","name":"KHALID EL SAYED FOR GeneratorRAL TRADING","contactName":"KHALID EL SAYYED","contactNumber":"76925378","email":"elsayedkhalid87@gmail.com","location":"Nahr El Bared","address":"NAHER AL BARED","district":"Akkar","governorate":"Akkar","localSupplier":true,"experience":"good","esgVerified":false,"lat":34.47712,"lng":35.94065,"reviews":8,"rating":4.7,"docs":0,"since":2022},{"id":"s75","subCategory":"Contracting","mainCategory":"Construction Service","name":"ASSEM ALSAYYED FOR TRADING AND Contracting","contactName":"Assem Al Sayyed","contactNumber":"71-039172","email":"asem20304@gmail.com","location":"Nahr El Bared","address":"NAHER AL BARED","district":"Akkar","governorate":"Akkar","localSupplier":true,"experience":"good","esgVerified":false,"lat":34.4785,"lng":35.94203,"reviews":11,"rating":4.9,"docs":1,"since":2024},{"id":"s76","subCategory":"Contracting","mainCategory":"Construction Service","name":"F.O FOR GeneratorRAL Contracting","contactName":"AHMAD OMAR","contactNumber":"70482546","email":"ahmad-al-omar@outlook.com","location":"Nahr El Bared","address":"NAHER AL BARED","district":"Akkar","governorate":"Akkar","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":34.46669,"lng":35.93049,"reviews":0,"rating":null,"docs":0,"since":2018},{"id":"s77","subCategory":"Contracting","mainCategory":"Construction Service","name":"ZEIDAN BARAKET","contactName":"ZEIDAN BARAKET","contactNumber":"70567100","email":"zeidanbarakat@hotmail.com","location":"Mechmech","address":"MECHMECH","district":"Akkar","governorate":"Akkar","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":34.54635,"lng":36.14615,"reviews":0,"rating":null,"docs":2,"since":2019},{"id":"s78","subCategory":"Car Repair","mainCategory":"Vehicule Maintenance and Repair","name":"STORE AHMAD AL HAJ","contactName":"70272675","contactNumber":"","email":"","location":"Tall Aabbas Ech-Charqi","address":"TALL ABBAS","district":"Akkar","governorate":"Akkar","localSupplier":true,"experience":"neutral","esgVerified":true,"lat":34.58917,"lng":36.2055,"reviews":1,"rating":3.7,"docs":1,"since":2016},{"id":"s79","subCategory":"General Trading","mainCategory":"Other items","name":"G.P.S","contactName":"Maher EL Youssif","contactNumber":"00961 70 176 869","email":"sami.obeidangmai@gmail.com","location":"Akkar","address":"Akkar","district":"Akkar","governorate":"Akkar","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":34.53594,"lng":36.07487,"reviews":0,"rating":null,"docs":0,"since":2018},{"id":"s80","subCategory":"Contracting","mainCategory":"Construction Service","name":"RAZAH HUSEIN","contactName":"","contactNumber":"","email":"","location":"Wadi Khaled","address":"WADI KHALED","district":"Akkar","governorate":"Akkar","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":34.61276,"lng":36.22957,"reviews":0,"rating":null,"docs":0,"since":2019},{"id":"s81","subCategory":"Technician","mainCategory":"Other Services","name":"Mohamad Khalil","contactName":"Mohamad Khalil","contactNumber":"0096171951358","email":"","location":"Akkar","address":"Akkar","district":"Akkar","governorate":"Akkar","localSupplier":true,"experience":"neutral","esgVerified":false,"lat":34.53634,"lng":36.07528,"reviews":4,"rating":3.2,"docs":1,"since":2019},{"id":"s82","subCategory":"Supply of Transportation Services","mainCategory":"Transport","name":"talal el cheikh","contactName":"talal el cheikh","contactNumber":"76-160558","email":"","location":"Wadi Khaled","address":"Wadi Khaled","district":"Akkar","governorate":"Akkar","localSupplier":true,"experience":"good","esgVerified":false,"lat":34.60856,"lng":36.22496,"reviews":2,"rating":4.3,"docs":0,"since":2017},{"id":"s83","subCategory":"Contracting","mainCategory":"Construction Service","name":"HUSSEIN ISMAIL","contactName":"HUSSEIN ISMAIL","contactNumber":"70/546032","email":"husien70546032@outlook.com","location":"Nahr El Bared","address":"NAHER AL BARED","district":"Akkar","governorate":"Akkar","localSupplier":true,"experience":"neutral","esgVerified":false,"lat":34.46781,"lng":35.93134,"reviews":4,"rating":3.2,"docs":0,"since":2018},{"id":"s84","subCategory":"Security","mainCategory":"Other items","name":"Suncity Security","contactName":"Mostafa Boulad","contactNumber":"009616696019","email":"","location":"Akkar","address":"Akkar","district":"Akkar","governorate":"Akkar","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":34.54077,"lng":36.07984,"reviews":0,"rating":null,"docs":2,"since":2020},{"id":"s85","subCategory":"Contracting","mainCategory":"Construction Service","name":"FREJI FOR GeneratorRAL TRADING","contactName":"Khaled Jamal Freiji","contactNumber":"03/598116","email":"khalid.freji@gmail.com","location":"Nahr El Bared","address":"NAHER AL BARED","district":"Akkar","governorate":"Akkar","localSupplier":true,"experience":"good","esgVerified":false,"lat":34.46493,"lng":35.92846,"reviews":2,"rating":4.3,"docs":0,"since":2017},{"id":"s86","subCategory":"Contracting","mainCategory":"Construction Service","name":"ALHANAFI","contactName":"Hussein Ghuneim","contactNumber":"71-960737","email":"hussein_ghuneim@outlook.com","location":"Nahr El Bared","address":"NAHER AL BARED","district":"Akkar","governorate":"Akkar","localSupplier":true,"experience":"good","esgVerified":false,"lat":34.46604,"lng":35.92957,"reviews":2,"rating":4.3,"docs":0,"since":2017},{"id":"s87","subCategory":"","mainCategory":"Other Services","name":"Joe and george for Contracting","contactName":"JOE HALAL","contactNumber":"03661774 06350790","email":"joehelal@hotmail.com","location":"Qoubaiyat","address":"Qobayat","district":"Akkar","governorate":"Akkar","localSupplier":true,"experience":"good","esgVerified":true,"lat":34.58643,"lng":36.2845,"reviews":4,"rating":4.5,"docs":1,"since":2019},{"id":"s88","subCategory":"Supply of Transportation Services","mainCategory":"Transport","name":"Transportation Nour","contactName":"Fouad Ibrahim","contactNumber":"03/560386","email":"","location":"Akkar","address":"Akkar","district":"Akkar","governorate":"Akkar","localSupplier":true,"experience":"no_experience","esgVerified":true,"lat":34.5411,"lng":36.0803,"reviews":0,"rating":null,"docs":0,"since":2021},{"id":"s89","subCategory":"Supply of Agricultural Materials & Equipment","mainCategory":"Agricultural Engineering company","name":"hatem Barakat","contactName":"hatem barakat","contactNumber":"03-341254","email":"","location":"Deir dalloum","address":"Deir dalloum","district":"Akkar","governorate":"Akkar","localSupplier":true,"experience":"good","esgVerified":true,"lat":34.55206,"lng":36.10212,"reviews":9,"rating":4.7,"docs":0,"since":2022},{"id":"s90","subCategory":"Software development","mainCategory":"IT Software","name":"Skyweb (Software & Education)","contactName":"Fayza Ahmad","contactNumber":"+96181921090","email":"fayza_sah@hotmail.com","location":"Jdita","address":"Lebanon/Bekaa/Jdita","district":"Zahle","governorate":"Bekaa","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":33.76428,"lng":35.90105,"reviews":0,"rating":null,"docs":1,"since":2023},{"id":"s91","subCategory":"tools and equipment","mainCategory":"Tools and Hardware","name":"Ets George Nassr","contactName":"Nabil Riyachi","contactNumber":"08 806 100","email":"","location":"Zahle","address":"Zahle","district":"Zahle","governorate":"Bekaa","localSupplier":true,"experience":"neutral","esgVerified":false,"lat":33.83757,"lng":35.89337,"reviews":11,"rating":3.7,"docs":2,"since":2024},{"id":"s92","subCategory":"Contractor","mainCategory":"Construction Service","name":"Saleh Group for Trading and Contracting","contactName":"Salah Saleh","contactNumber":"3920220","email":"","location":"ANjar","address":"Anjar","district":"Zahle","governorate":"Bekaa","localSupplier":true,"experience":"good","esgVerified":false,"lat":33.72091,"lng":35.92868,"reviews":3,"rating":4.4,"docs":0,"since":2018},{"id":"s93","subCategory":"Basic printing Requirements","mainCategory":"Printing","name":"EST Essam","contactName":"Kassem Jarrah","contactNumber":"3459650","email":"","location":"Bar Elias","address":"Bar Elias","district":"Zahle","governorate":"Bekaa","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":33.77599,"lng":35.89996,"reviews":0,"rating":null,"docs":1,"since":2022},{"id":"s94","subCategory":"Consumable","mainCategory":"Food - Dry Food","name":"Al Radwan for Trading and Marketing","contactName":"","contactNumber":"8506222","email":"","location":"Saadnayel","address":"Saadnayel","district":"Zahle","governorate":"Bekaa","localSupplier":true,"experience":"good","esgVerified":true,"lat":33.89053,"lng":35.9123,"reviews":5,"rating":4.5,"docs":0,"since":2019},{"id":"s95","subCategory":"Water","mainCategory":"Office/ House Items (cleaning, food, equipment…)","name":"RIM Natural Spring Mineral Water SAL","contactName":"Sami Baaklini","contactNumber":"009614413035","email":"hisham.zougheib@rimwater.com","location":"Zahle","address":"Zahle","district":"Zahle","governorate":"Bekaa","localSupplier":true,"experience":"good","esgVerified":false,"lat":33.85441,"lng":35.90981,"reviews":11,"rating":4.9,"docs":0,"since":2024},{"id":"s96","subCategory":"IT Consumable","mainCategory":"IT Consumables and Accessories","name":"Computronix","contactName":"Walid Hellani","contactNumber":"3812964","email":"","location":"Ksara","address":"Zahle-Ksara","district":"Zahle","governorate":"Bekaa","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":33.81119,"lng":35.89752,"reviews":0,"rating":null,"docs":1,"since":2017},{"id":"s97","subCategory":"BUILDING","mainCategory":"Building Repair and Maintenance","name":"Industrial and Mechanical Agency","contactName":"Ibrahim Araji","contactNumber":"0096171271067","email":"ima.incorporation@gmail.com","location":"Zahle","address":"Zahle","district":"Zahle","governorate":"Bekaa","localSupplier":true,"experience":"neutral","esgVerified":false,"lat":33.84535,"lng":35.90115,"reviews":5,"rating":3.3,"docs":0,"since":2019},{"id":"s98","subCategory":"Supply of Refreshments","mainCategory":"Office/ House Items (cleaning, food, equipment…)","name":"ALI RAFIC ANKA AND CO FOR TRADING AND DISTRIBUTION","contactName":"Ali Anka","contactNumber":"71-601601","email":"Alianka@hotmail.com","location":"Taanayel","address":"Taaneyl Mail Road","district":"Taanayel","governorate":"Bekaa","localSupplier":true,"experience":"good","esgVerified":false,"lat":33.79002,"lng":35.88722,"reviews":11,"rating":4.9,"docs":2,"since":2024},{"id":"s99","subCategory":"House Appliances","mainCategory":"Furniture","name":"MAF","contactName":"Mohamad Abed fatah","contactNumber":"3640999","email":"","location":"Anjar","address":"Anjar","district":"Zahle","governorate":"Bekaa","localSupplier":true,"experience":"neutral","esgVerified":true,"lat":33.72705,"lng":35.93468,"reviews":8,"rating":3.5,"docs":1,"since":2022},{"id":"s100","subCategory":"Contractor","mainCategory":"Construction Service","name":"Eng. Mohamad Houchaimi","contactName":"Mohamad Houchaimi","contactNumber":"03-433437","email":"eng-mohamad-h@hotmail.com","location":"Taanayel","address":"Taanayel","district":"Zahle","governorate":"Bekaa","localSupplier":true,"experience":"neutral","esgVerified":false,"lat":33.79136,"lng":35.88829,"reviews":12,"rating":3.7,"docs":0,"since":2025},{"id":"s101","subCategory":"Diesel","mainCategory":"Fuel & Gas","name":"Khatcho Station","contactName":"Charbel Gabriel","contactNumber":"3755681","email":"","location":"Zahle","address":"Zahle","district":"Zahle","governorate":"Bekaa","localSupplier":true,"experience":"good","esgVerified":true,"lat":33.85297,"lng":35.90878,"reviews":12,"rating":4.9,"docs":0,"since":2024},{"id":"s102","subCategory":"Water tanks - Plastic products","mainCategory":"Water storage, equipments and accessories","name":"PandaPlast","contactName":"Noujoud","contactNumber":"08-800801","email":"sales@pandaplast.com","location":"Karak Nouh","address":"Karak Nouh","district":"Zahle","governorate":"Bekaa","localSupplier":true,"experience":"bad","esgVerified":false,"lat":34.52135,"lng":36.06155,"reviews":2,"rating":1.8,"docs":1,"since":2017},{"id":"s103","subCategory":"Water truck","mainCategory":"Water Trucking","name":"Nazih Abou Chedid","contactName":"","contactNumber":"71-270800","email":"","location":"Jdita","address":"Jdita","district":"Zahle","governorate":"Bekaa","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":33.76009,"lng":35.89699,"reviews":0,"rating":null,"docs":0,"since":2020},{"id":"s104","subCategory":"Secu","mainCategory":"Other items","name":"Born for Energy","contactName":"Ziad Chehimi","contactNumber":"0096170250409","email":"bader.chehimmi@hotmail.com","location":"Zahle","address":"Zahle","district":"Zahle","governorate":"Bekaa","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":33.84839,"lng":35.90392,"reviews":0,"rating":null,"docs":0,"since":2021},{"id":"s105","subCategory":"Drip irrigation","mainCategory":"Agricultural Engineering company","name":"Mohamad Zeinati General Trading","contactName":"Mohamad Zeinati","contactNumber":"3898389","email":"","location":"Anjar","address":"Anjar","district":"Zahle","governorate":"Bekaa","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":33.72201,"lng":35.92964,"reviews":0,"rating":null,"docs":2,"since":2018},{"id":"s106","subCategory":"Contractor","mainCategory":"Construction Service","name":"Al-Rawan Company fot General Conracting and Trading S.A.R.L","contactName":"Zouhair Mhamad Abed El Assi","contactNumber":"","email":"","location":"Ghaziye","address":"Saida, Ghazieh Main street, Saleh building","district":"Saida","governorate":"South","localSupplier":true,"experience":"good","esgVerified":false,"lat":33.51154,"lng":35.30473,"reviews":5,"rating":4.5,"docs":0,"since":2020},{"id":"s107","subCategory":"Contractor","mainCategory":"Construction Service","name":"MTCA","contactName":"Albert Youssef","contactNumber":"3361409","email":"","location":"Jezzine","address":"Jezzine","district":"Jezzine","governorate":"South","localSupplier":true,"experience":"bad","esgVerified":false,"lat":33.55315,"lng":35.59182,"reviews":1,"rating":1.8,"docs":0,"since":2025},{"id":"s108","subCategory":"Water pump","mainCategory":"Water Pumps, accessories and consumables","name":"Obeid for Pumps est","contactName":"Mahmoud Haidari","contactNumber":"+9617222071","email":"mahmoud.haidari@obeidforpumps.net","location":"Ghaziye","address":"Lebanon/Saida/Ghazieh","district":"Saida","governorate":"South","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":33.51929,"lng":35.31249,"reviews":0,"rating":null,"docs":1,"since":2023},{"id":"s109","subCategory":"Electronics","mainCategory":"Electrical Service","name":"South Electrical Centre","contactName":"Hassan","contactNumber":"07-343843","email":"","location":"Sour","address":"Sour","district":"Sour","governorate":"South","localSupplier":true,"experience":"good","esgVerified":false,"lat":33.26273,"lng":35.19606,"reviews":12,"rating":4.9,"docs":0,"since":2016},{"id":"s110","subCategory":"Printing","mainCategory":"Printing","name":"Amleyeh Print","contactName":"Mohamad kassiir","contactNumber":"07-345760","email":"amlieh_printing@hotmail.com","location":"Aabbassiye","address":"Tyre-mafrak Al Abbaseyeh-center Al Nour","district":"Sour","governorate":"South","localSupplier":true,"experience":"good","esgVerified":false,"lat":34.52725,"lng":36.05746,"reviews":4,"rating":4.5,"docs":0,"since":2018},{"id":"s111","subCategory":"Electronics","mainCategory":"Electrical Service","name":"Abed Tahan - Tyre","contactName":"Hassan Dawood","contactNumber":"01-645645","email":"","location":"Sour","address":"Sour","district":"Sour","governorate":"South","localSupplier":true,"experience":"good","esgVerified":false,"lat":33.26872,"lng":35.20219,"reviews":5,"rating":4.5,"docs":1,"since":2019},{"id":"s112","subCategory":"lawyer","mainCategory":"Lawyer & Notary","name":"MENA City","contactName":"Alice Choueiri","contactNumber":"81-797703","email":"alice.choueiri@mcl-lb.com","location":"Achrafiye","address":"Achrafiye","district":"Saida","governorate":"South","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":33.89504,"lng":35.52664,"reviews":0,"rating":null,"docs":2,"since":2024},{"id":"s113","subCategory":"Printers","mainCategory":"IT Equipment","name":"New Company","contactName":"","contactNumber":"07-730175","email":"","location":"Saida","address":"Saida","district":"Saida","governorate":"South","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":33.56538,"lng":35.38038,"reviews":0,"rating":null,"docs":0,"since":2022},{"id":"s114","subCategory":"Plastic chairs & tables","mainCategory":"Water storage, equipments and accessories","name":"Kama plast","contactName":"","contactNumber":"07-222200-03-210100","email":"","location":"Saida","address":"Saida","district":"Saida","governorate":"South","localSupplier":true,"experience":"good","esgVerified":true,"lat":33.56882,"lng":35.38396,"reviews":1,"rating":4.3,"docs":1,"since":2017},{"id":"s115","subCategory":"lawyer","mainCategory":"Lawyer & Notary","name":"HBDT","contactName":"","contactNumber":"01-328400","email":"hbdt@hbdt-law.com","location":"Achrafiye","address":"Achrafiye","district":"Saida","governorate":"South","localSupplier":true,"experience":"neutral","esgVerified":false,"lat":33.88999,"lng":35.52132,"reviews":7,"rating":3.4,"docs":0,"since":2020},{"id":"s116","subCategory":"General Trading","mainCategory":"Food - Dry Food","name":"Sharhabil Market","contactName":"Hadi Kawwas","contactNumber":"009617727248","email":"","location":"Saida","address":"Saida","district":"Saida","governorate":"South","localSupplier":true,"experience":"good","esgVerified":false,"lat":33.56136,"lng":35.37649,"reviews":8,"rating":4.7,"docs":0,"since":2022},{"id":"s117","subCategory":"Training for English language course","mainCategory":"Training Services","name":"Bassam Hallak","contactName":"Bassam Hallak","contactNumber":"","email":"bassamk.hallak@gmail.com","location":"Majdelyoun","address":"Lebanon/South/Saida/Majdelyoun","district":"Saida","governorate":"South","localSupplier":true,"experience":"neutral","esgVerified":false,"lat":33.36544,"lng":35.59537,"reviews":11,"rating":3.7,"docs":1,"since":2024},{"id":"s118","subCategory":"rehabilitation works","mainCategory":"Construction Service","name":"Polymed SARL","contactName":"Sayed A El Hariri","contactNumber":"+9617755081","email":"mhariri@masargroup.com","location":"Saida","address":"Lebanon/Saida/Riad el solh st/Zaatari bldg 6th flr","district":"Saida","governorate":"South","localSupplier":true,"experience":"no_experience","esgVerified":true,"lat":33.56681,"lng":35.38194,"reviews":0,"rating":null,"docs":0,"since":2023},{"id":"s119","subCategory":"engineering, general trading and contracting","mainCategory":"Construction Service","name":"karim E.T.C S.A.R.L","contactName":"Bassam Karim","contactNumber":"+9613895620","email":"karimetcsarl@gmail.com","location":"Saida","address":"Saida, Riad el solh street, rachidi building, nejme street, second floor, sidon","district":"Saida","governorate":"South","localSupplier":true,"experience":"no_experience","esgVerified":true,"lat":33.55526,"lng":35.37039,"reviews":0,"rating":null,"docs":2,"since":2017},{"id":"s120","subCategory":"Cake and pastry","mainCategory":"Food - Catering","name":"Oriental","contactName":"","contactNumber":"07-742057","email":"","location":"Sour","address":"Sour","district":"Sour","governorate":"South","localSupplier":true,"experience":"neutral","esgVerified":false,"lat":33.27715,"lng":35.21075,"reviews":10,"rating":3.6,"docs":1,"since":2023},{"id":"s121","subCategory":"INTERNET","mainCategory":"IT Internet Fees","name":"Eid for computers and accessories","contactName":"Chadi kazwah","contactNumber":"0096171475126","email":"info@terra.net.lb","location":"Saida","address":"Saida","district":"Saida","governorate":"South","localSupplier":true,"experience":"good","esgVerified":false,"lat":33.55314,"lng":35.36827,"reviews":1,"rating":4.3,"docs":0,"since":2025},{"id":"s122","subCategory":"Painter","mainCategory":"Building Repair and Maintenance","name":"Mohammad Kordi","contactName":"Mohammad Kordi","contactNumber":"03 061 445","email":"","location":"Baalbek","address":"Baalbek","district":"Baalbek","governorate":"Baalbek-Hermel","localSupplier":true,"experience":"neutral","esgVerified":false,"lat":34.00427,"lng":36.21626,"reviews":5,"rating":3.3,"docs":0,"since":2019},{"id":"s123","subCategory":"Transportation","mainCategory":"Transport","name":"Ballouk for Tourism","contactName":"Anis Al Saghir","contactNumber":"70-791611","email":"","location":"Baalbek","address":"Baalbek","district":"Baalbek","governorate":"Baalbek-Hermel","localSupplier":true,"experience":"neutral","esgVerified":false,"lat":33.99828,"lng":36.21041,"reviews":2,"rating":3.1,"docs":1,"since":2017},{"id":"s124","subCategory":"GENERAL FOOD","mainCategory":"Food - Catering","name":"The black Pearl co sarl","contactName":"Moustafa koubaissi","contactNumber":"009613389140","email":"mariam_bannout@hotmail.com","location":"Al Ansar Baalbek","address":"Al Ansar Baalbek","district":"Baalbek","governorate":"Baalbek-Hermel","localSupplier":true,"experience":"good","esgVerified":false,"lat":34.01515,"lng":36.19508,"reviews":3,"rating":4.4,"docs":0,"since":2018},{"id":"s125","subCategory":"Stress counselor","mainCategory":"Services - Other Consultancies","name":"Ali Mohamad Alattar","contactName":"Ali Mohamad Alattar","contactNumber":"","email":"","location":"Chaat","address":"Chaat, mosque neighborhood, baalback, al hermel","district":"Baalbek","governorate":"Baalbek-Hermel","localSupplier":true,"experience":"neutral","esgVerified":true,"lat":34.03061,"lng":36.11894,"reviews":8,"rating":3.5,"docs":0,"since":2022},{"id":"s126","subCategory":"Maintenance / DIY Store (Do It Yourself)","mainCategory":"Building Repair and Maintenance","name":"Raad Commercial Firm","contactName":"","contactNumber":"70/398458","email":"","location":"Baalbek","address":"Baalbek","district":"Baalbek","governorate":"Baalbek-Hermel","localSupplier":true,"experience":"good","esgVerified":false,"lat":34.01132,"lng":36.22346,"reviews":11,"rating":4.9,"docs":2,"since":2024},{"id":"s127","subCategory":"Seeds","mainCategory":"Agriculture - Seeds and products","name":"Ali Mostafa Hajj Hassan Company","contactName":"Ahmad Hajj Hassan","contactNumber":"3837502","email":"","location":"Tammine et Tahta","address":"Tamnin","district":"Baalbek","governorate":"Baalbek-Hermel","localSupplier":true,"experience":"neutral","esgVerified":true,"lat":33.90633,"lng":35.9264,"reviews":11,"rating":3.7,"docs":0,"since":2025},{"id":"s128","subCategory":"Contractor","mainCategory":"Construction Service","name":"Beitokom (NGO)","contactName":"Mohammad Abdel Sater","contactNumber":"03 023 210","email":"","location":"Baalbek","address":"Baalbek","district":"Baalbek","governorate":"Baalbek-Hermel","localSupplier":true,"experience":"good","esgVerified":false,"lat":34.00939,"lng":36.22166,"reviews":8,"rating":4.7,"docs":0,"since":2022},{"id":"s129","subCategory":"Painter","mainCategory":"Building Repair and Maintenance","name":"George Jarbanda","contactName":"George Jarbanda","contactNumber":"70 366 132","email":"","location":"Baalbek","address":"Baalbek","district":"Baalbek","governorate":"Baalbek-Hermel","localSupplier":true,"experience":"bad","esgVerified":false,"lat":34.00425,"lng":36.21666,"reviews":5,"rating":2,"docs":1,"since":2019},{"id":"s130","subCategory":"Disludging sevices","mainCategory":"Sanitation - Dewatering Service","name":"Ali Jarouch","contactName":"Ali Jarouch","contactNumber":"03-649236","email":"","location":"Saraain el Faouqa","address":"Saraain el Faouqa","district":"Baalbek","governorate":"Baalbek-Hermel","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":34.54548,"lng":36.14569,"reviews":0,"rating":null,"docs":0,"since":2017},{"id":"s131","subCategory":"Public sector","mainCategory":"Other Services","name":"Municipality of Younine","contactName":"Hassan Sawwan","contactNumber":"","email":"","location":"Younine","address":"Younine","district":"Baalbek","governorate":"Baalbek-Hermel","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":34.06016,"lng":36.14347,"reviews":0,"rating":null,"docs":0,"since":2017},{"id":"s132","subCategory":"Excavation services","mainCategory":"Building Rental","name":"Salah Trading Company","contactName":"Ali Salah","contactNumber":"08 371 428","email":"","location":"Baalbek","address":"Baalbek","district":"Baalbek","governorate":"Baalbek-Hermel","localSupplier":true,"experience":"neutral","esgVerified":true,"lat":34.00828,"lng":36.22055,"reviews":9,"rating":3.5,"docs":1,"since":2022},{"id":"s133","subCategory":"Training carpets","mainCategory":"Training Services","name":"Mahdi Khalaf","contactName":"","contactNumber":"03-140321","email":"","location":"Fakehe","address":"Fakehe","district":"Baalbek","governorate":"Baalbek-Hermel","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":34.56325,"lng":36.24228,"reviews":0,"rating":null,"docs":2,"since":2020},{"id":"s134","subCategory":"Contractor","mainCategory":"Construction Service","name":"Waddah Mostafa","contactName":"Waddah Mostafa","contactNumber":"76727143","email":"","location":"houla","address":"Houla-South Lebanon","district":"Marjaayoun","governorate":"El Nabatieh","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":33.21065,"lng":35.51759,"reviews":0,"rating":null,"docs":0,"since":2017},{"id":"s135","subCategory":"Window anti shatter film","mainCategory":"Other items","name":"Lindustry","contactName":"Abed Fakih","contactNumber":"+9613696229","email":"abedfakih78@yahoo.com","location":"Kfar Roummane","address":"Kfarhamam, Nabatieh, Lebanon","district":"El Nabatieh","governorate":"El Nabatieh","localSupplier":true,"experience":"bad","esgVerified":false,"lat":33.4147,"lng":35.48941,"reviews":8,"rating":2.2,"docs":1,"since":2021},{"id":"s136","subCategory":"Building Upgrades","mainCategory":"Building Repair and Maintenance","name":"Hussam Ali Hadife","contactName":"Hussam Ali Hadife","contactNumber":"","email":"","location":"Ain Qenya","address":"Lebanon/Ain Kanniya","district":"Hasbaya","governorate":"El Nabatieh","localSupplier":true,"experience":"no_experience","esgVerified":true,"lat":33.80516,"lng":35.599,"reviews":0,"rating":null,"docs":0,"since":2020},{"id":"s137","subCategory":"SER","mainCategory":"Services - Other Consultancies","name":"Georges Haddad","contactName":"Georges Haddad","contactNumber":"03-805423","email":"","location":"Marjaayoun","address":"Marjeyoun Caza Highway,Ebel AlSaki, Al Madares street","district":"Marjaayoun","governorate":"El Nabatieh","localSupplier":true,"experience":"bad","esgVerified":false,"lat":33.36141,"lng":35.59361,"reviews":8,"rating":2.2,"docs":0,"since":2022},{"id":"s138","subCategory":"Videography Trainer","mainCategory":"Multimedia - Video & Photo","name":"Hassan Chamseddine","contactName":"Hassan Chamseddine","contactNumber":"","email":"hassanshamseddine1996@gmail.com","location":"Marjaayoun","address":"MAJDAL SILM- MARJAYOUN, SOUTH, LEBANON","district":"Marjaayoun","governorate":"El Nabatieh","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":33.36178,"lng":35.59357,"reviews":0,"rating":null,"docs":1,"since":2021},{"id":"s139","subCategory":"Taxi driver","mainCategory":"Transport","name":"Mohammad Dali","contactName":"Mohammad Dali","contactNumber":"","email":"","location":"Chebaa","address":"Chebaa, lebanon","district":"Hasbaya","governorate":"El Nabatieh","localSupplier":true,"experience":"good","esgVerified":false,"lat":33.37042,"lng":35.68695,"reviews":9,"rating":4.8,"docs":0,"since":2023},{"id":"s140","subCategory":"Trainer","mainCategory":"Training Services","name":"Nidaa Khalil Mansour","contactName":"","contactNumber":"","email":"","location":"Insar","address":"Ansar","district":"El Nabatieh","governorate":"El Nabatieh","localSupplier":true,"experience":"good","esgVerified":false,"lat":34.42578,"lng":36.03584,"reviews":3,"rating":4.4,"docs":2,"since":2017},{"id":"s141","subCategory":"General Food","mainCategory":"Food - Catering","name":"JNE","contactName":"Elias Sleiman","contactNumber":"0096171409031","email":"joelle.sleiman@jnecrown.com","location":"Marjaayoun","address":"Marjaayoun","district":"Marjaayoun","governorate":"El Nabatieh","localSupplier":true,"experience":"no_experience","esgVerified":false,"lat":33.36918,"lng":35.60125,"reviews":0,"rating":null,"docs":1,"since":2017},{"id":"s142","subCategory":"Hotel Nabatieh","mainCategory":"Building Rental","name":"Al Dana Hotel","contactName":"Fouad Chakib Hamra","contactNumber":"","email":"","location":"Marjaayoun","address":"Nabatiyeh, Marjeyoun, Ebl El Saki Crossroad, Main street, Building: Hamra","district":"Marjaayoun","governorate":"El Nabatieh","localSupplier":true,"experience":"neutral","esgVerified":true,"lat":33.36742,"lng":35.59949,"reviews":10,"rating":3.6,"docs":0,"since":2023},{"id":"s143","subCategory":"works","mainCategory":"Construction Service","name":"Al Zahraa Trading& Contracting co","contactName":"Ali Hussein Jizzini","contactNumber":"+9611531990","email":"ztc.co@hotmail.com","location":"Habbouch","address":"Lebanon/South/Nabatiyeh/Haboush/facing Istikbal daher center 1st flr","district":"El Nabatieh","governorate":"El Nabatieh","localSupplier":true,"experience":"no_experience","esgVerified":true,"lat":33.47103,"lng":35.52082,"reviews":0,"rating":null,"docs":0,"since":2023},{"id":"s144","subCategory":"Building","mainCategory":"Construction Service","name":"S.A.D for Trading and Contracting","contactName":"Samer Abou Daoud","contactNumber":"0096170689157","email":"sad.tradingandcontracting@gmail.com","location":"Mari","address":"Al Meri - Hasbayaa","district":"Hasbaya","governorate":"El Nabatieh","localSupplier":true,"experience":"neutral","esgVerified":false,"lat":33.39845,"lng":35.70572,"reviews":10,"rating":3.6,"docs":1,"since":2023},{"id":"s145","subCategory":"Electronics","mainCategory":"Electrical Service","name":"Alkoubaysi","contactName":"Fouad Koubaysi","contactNumber":"07-761378","email":"ktco@hotmail.com","location":"Zebdine El Nabatieh","address":"Zebdine El Nabatieh","district":"El Nabatieh","governorate":"El Nabatieh","localSupplier":true,"experience":"good","esgVerified":false,"lat":33.34184,"lng":35.47178,"reviews":2,"rating":4.3,"docs":0,"since":2017},{"id":"s146","subCategory":"Conference Room South Lebanon- Marjeyoun","mainCategory":"Building Rental","name":"Dana Hotel","contactName":"Fouad Hamra","contactNumber":"+9617831000","email":"danaresort52@gmail.com","location":"Marjaayoun","address":"Lebanon/South/Marjeyoun Ibel Alsaki Main st","district":"Marjaayoun","governorate":"El Nabatieh","localSupplier":true,"experience":"no_experience","esgVerified":true,"lat":33.35596,"lng":35.58816,"reviews":0,"rating":null,"docs":0,"since":2018},{"id":"s147","subCategory":"Medical supplies","mainCategory":"Medical Drugs and equipment","name":"Younis","contactName":"","contactNumber":"07-765190","email":"","location":"Nabatiye el Tahta","address":"Nabatiye el Tahta","district":"El Nabatieh","governorate":"El Nabatieh","localSupplier":true,"experience":"good","esgVerified":true,"lat":33.37954,"lng":35.47954,"reviews":7,"rating":4.6,"docs":2,"since":2020}];
+const OWNER_EMAIL = "wael.chalak1@gmail.com";
+const EXPERIENCE = {
+  good: { label: "Good", color: "#1F7A4C" },
+  neutral: { label: "Neutral", color: "#B9790A" },
+  bad: { label: "Poor", color: "#C23B3B" },
+  no_experience: { label: "Unrated", color: "#7d7979" }
+};
+const STATUS = {
+  esg:  { label: "ESG verified",          color: "#1F7A4C" },
+  hulo: { label: "Hulo verified",         color: "#fdd020" },
+  none: { label: "No previous experience", color: "#7d7979" }
+};
+function statusOf(s){
+  if (s.esgVerified) return "esg";
+  if (s.experience && s.experience !== "no_experience") return "hulo";
+  return "none";
+}
+const GOVS = ["Beirut","Mount Lebanon","North","Akkar","Bekaa","Baalbek-Hermel","South","El Nabatieh"];
+const DISTRICTS = {
+  "Beirut": ["Beirut"],
+  "Mount Lebanon": ["Aley","Baabda","Chouf","El Meten","Jbeil","Kesrwane"],
+  "North": ["El Batroun","Bcharre","El Koura","El Minieh-Dennie","Tripoli","Zgharta"],
+  "Akkar": ["Akkar"],
+  "Bekaa": ["Rachaya","West Bekaa","Zahle"],
+  "Baalbek-Hermel": ["Baalbek","Hermel"],
+  "South": ["Jezzine","Saida","Sour"],
+  "El Nabatieh": ["Bint Jbeil","Hasbaya","Marjaayoun","El Nabatieh"]
+};
+const ALL_DISTRICTS = Object.values(DISTRICTS).reduce((a, b) => a.concat(b), []).sort();
+const REVIEWS = {
+  good: [
+    ["Delivered the full order to Akkar two days early. Paperwork was clean, no chasing.", "Procurement, Tripoli office"],
+    ["Third framework in a row with them. Prices hold, invoices match the PO.", "Logistics lead"],
+    ["Handled a mid-contract scope change without renegotiating. Would use again.", "Programme support"]
+  ],
+  neutral: [
+    ["Quality fine, communication slow — expect to follow up twice before dispatch.", "Procurement officer"],
+    ["Competitive on price but delivery slipped a week on the last two orders.", "Field logistics, Bekaa"]
+  ],
+  bad: [
+    ["Partial delivery, substituted items without approval. Escalated to finance.", "Procurement officer"],
+    ["Documentation incomplete at payment stage; caused an audit query.", "Finance"]
+  ]
+};
+const DOCNAMES = ["Business registration certificate.pdf","Tax compliance certificate.pdf","Framework agreement 2025.pdf","Bank details form.pdf"];
+
+function hash(str){ let x=2166136261; for (const c of String(str)) { x^=c.charCodeAt(0); x=Math.imul(x,16777619); } return (x>>>0)/4294967295; }
+
+class Component extends DCLogic {
+  state = {
+    list: [], view: "landing", tab: "directory",
+    q: "", gov: "", cat: "", status: "",
+    sort: "name", dir: 1, limit: 40,
+    selected: null, paletteOpen: false, pq: "", pIdx: 0,
+    unlocked: false, authUser: null, authBusy: false, authError: "",
+    form: { status: "none", localSupplier: "true" },
+    toast: "", pendingDocs: [], coords: "",
+    editingId: null, manageQ: "", manageLimit: 25, esgHover: null
+  };
+
+  componentDidMount(){
+    this._unsubList = db.collection("suppliers").onSnapshot(snap => {
+      const list = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      if (list.length) this.setState({ list }, () => this.syncMaps());
+    }, err => {
+      console.error("Firestore read failed:", err);
+      this.setState({ list: SUPPLIER_DATA }, () => this.syncMaps());
+      this.toast("Could not reach the database — showing a local copy.");
+    });
+    // Firestore's listener fires an empty snapshot from local cache before
+    // (or instead of, if firebase-config.js still has placeholder values,
+    // or there's no network) real server data ever arrives — so an empty
+    // result above isn't applied. If nothing real has shown up after a few
+    // seconds, fall back to the bundled copy rather than leaving the page
+    // looking blank. The listener stays live, so it's replaced the moment
+    // real data does arrive.
+    setTimeout(() => {
+      if (this.state.list.length === 0) {
+        this.setState({ list: SUPPLIER_DATA }, () => this.syncMaps());
+        this.toast("Not connected to Firebase yet — showing a local copy of the data.");
+      }
+    }, 4000);
+    this._unsubAuth = auth.onAuthStateChanged(user => {
+      const isOwner = !!user && user.email === OWNER_EMAIL;
+      this.setState({
+        authUser: user, unlocked: isOwner,
+        authError: (user && !isOwner) ? ("Signed in as " + user.email + " — this isn't the authorized account.") : ""
+      });
+      if (isOwner) this.maybeSeed();
+    });
+    this._key = e => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") { e.preventDefault(); this.setState({ paletteOpen: true, pq: "", pIdx: 0 }); }
+      else if (e.key === "Escape") this.setState({ paletteOpen: false, selected: null });
+    };
+    window.addEventListener("keydown", this._key);
+  }
+  componentWillUnmount(){
+    window.removeEventListener("keydown", this._key);
+    if (this._unsubList) this._unsubList();
+    if (this._unsubAuth) this._unsubAuth();
+  }
+  async maybeSeed(){
+    if (this._seedChecked) return;
+    this._seedChecked = true;
+    try {
+      const flag = await db.collection("meta").doc("seed").get();
+      if (flag.exists) return;
+      const batch = db.batch();
+      SUPPLIER_DATA.forEach(s => {
+        const { id, ...rest } = s;
+        batch.set(db.collection("suppliers").doc(id), rest);
+      });
+      batch.set(db.collection("meta").doc("seed"), { done: true, at: firebase.firestore.FieldValue.serverTimestamp() });
+      await batch.commit();
+      this.toast("Loaded the starting " + SUPPLIER_DATA.length + " suppliers into the database.");
+    } catch (err) {
+      console.error("Seed failed:", err);
+    }
+  }
+  signIn(){
+    this.setState({ authBusy: true, authError: "" });
+    auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+      .catch(err => this.setState({ authError: "Sign-in failed: " + err.message }))
+      .finally(() => this.setState({ authBusy: false }));
+  }
+  signOut(){ auth.signOut(); }
+  componentDidUpdate(){
+    this.syncMaps();
+    const fm = this.state.form;
+    document.querySelectorAll("select[name]").forEach(el => {
+      const want = el.name === "status" ? (fm.status || "none") : (fm[el.name] != null ? String(fm[el.name]) : "");
+      if (el.value !== want) el.value = want;
+    });
+  }
+
+  parseCoords(){
+    const parts = String(this.state.coords || "").split(",").map(p => parseFloat(p.trim()));
+    if (parts.length === 2 && !isNaN(parts[0]) && !isNaN(parts[1])) return parts;
+    return null;
+  }
+  dropPin(latlng){
+    if (!this._pin) return;
+    if (!latlng) { if (this._pinMarker) { this._pin.removeLayer(this._pinMarker); this._pinMarker = null; } return; }
+    if (this._pinMarker) this._pinMarker.setLatLng(latlng);
+    else {
+      this._pinMarker = L.circleMarker(latlng, { radius: 9, weight: 3, color: "#201e1d", fillColor: "#fdd020", fillOpacity: 1 }).addTo(this._pin);
+    }
+  }
+  initPin(){
+    const el = document.getElementById("pinMap");
+    if (!el) return;
+    if (!el._done) {
+      el._done = true;
+      const map = L.map(el, { scrollWheelZoom: true }).setView([33.86, 35.75], 8);
+      L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", { maxZoom: 18, attribution: "© OpenStreetMap, © CARTO" }).addTo(map);
+      map.on("click", e => {
+        const v = e.latlng.lat.toFixed(5) + ", " + e.latlng.lng.toFixed(5);
+        this._pinWanted = v;
+        this.setState({ coords: v });
+        this.dropPin(e.latlng);
+      });
+      this._pin = map;
+      setTimeout(() => { map.invalidateSize(); const p = this.parseCoords(); if (p) { this.dropPin(p); map.setView(p, 12); } }, 140);
+      return;
+    }
+    if (this._pinWanted !== this._pinShown) {
+      this._pinShown = this._pinWanted;
+      const p = this.parseCoords();
+      if (p) { this.dropPin(p); this._pin.setView(p, Math.max(this._pin.getZoom(), 11)); }
+      else this.dropPin(null);
+    }
+  }
+  readDocs(e){
+    const files = Array.from(e.target.files || []);
+    e.target.value = "";
+    files.forEach(file => {
+      if (file.type !== "application/pdf") { this.toast('"' + file.name + '" is not a PDF, skipped.'); return; }
+      if (file.size > 4 * 1024 * 1024) { this.toast('"' + file.name + '" is over 4MB, skipped.'); return; }
+      const r = new FileReader();
+      r.onload = () => this.setState(p => ({ pendingDocs: p.pendingDocs.concat([{ name: file.name, size: file.size, dataUrl: r.result }]) }));
+      r.readAsDataURL(file);
+    });
+  }
+
+  /* ---------- maps ---------- */
+  syncMaps(){
+    if (!window.L || !this.state.list.length) return;
+    if (this.state.view === "landing") this.initHero();
+    if (this.state.view === "app" && this.state.tab === "map") this.initTool();
+    if (this.state.view === "app" && this.state.tab === "add" && this.state.unlocked) this.initPin();
+  }
+  initHero(){
+    const el = document.getElementById("heroMap");
+    if (!el || el._done) return;
+    el._done = true;
+    const theme = (this.props.mapTheme ?? "dark") === "dark"
+      ? "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png"
+      : "https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png";
+    const map = L.map(el, { zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, keyboard:false, touchZoom:false });
+    L.tileLayer(theme, { maxZoom: 12 }).addTo(map);
+    map.setView([33.86, 35.75], 8.4);
+    this.state.list.forEach(s => {
+      L.circleMarker([s.lat, s.lng], {
+        radius: s.esgVerified ? 5.5 : 3.5, weight: s.esgVerified ? 1.6 : 0,
+        color: "#fdd020", fillColor: s.esgVerified ? "#fdd020" : "#f3f2f2",
+        fillOpacity: s.esgVerified ? .95 : .55, interactive: false
+      }).addTo(map);
+    });
+    this._hero = map;
+    setTimeout(() => map.invalidateSize(), 120);
+  }
+  initTool(){
+    const el = document.getElementById("toolMap");
+    if (!el) return;
+    if (!el._done) {
+      el._done = true;
+      el.classList.add("lf");
+      if (this._tool) { try { this._tool.remove(); } catch (err) {} }
+      this._sig = null;
+      const map = L.map(el, { zoomControl: true, scrollWheelZoom: true }).setView([33.86, 35.75], 8);
+      L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", { maxZoom: 18, attribution: "© OpenStreetMap, © CARTO" }).addTo(map);
+      this._tool = map; this._layer = L.layerGroup().addTo(map);
+      setTimeout(() => map.invalidateSize(), 120);
+    }
+    const sig = this.filtered().map(s => s.id).join(",");
+    if (sig === this._sig) return;
+    this._sig = sig;
+    this._layer.clearLayers();
+    this.filtered().forEach(s => {
+      const meta = STATUS[statusOf(s)];
+      const key = statusOf(s);
+      if (key === "esg") {
+        L.circleMarker([s.lat, s.lng], {
+          radius: 7, weight: 2, color: meta.color, fill: false, interactive: false,
+          className: "pin-halo"
+        }).addTo(this._layer);
+      }
+      const m = L.circleMarker([s.lat, s.lng], {
+        radius: 7, weight: 1.6, color: "#201e1d", fillColor: meta.color, fillOpacity: .95,
+        className: "pin-dot"
+      });
+      m.bindPopup(
+        '<div style="font-family:Archivo,sans-serif">' +
+        '<div style="background:#201e1d;padding:12px 14px;border-bottom:2px solid #fdd020">' +
+        '<div style="color:#f3f2f2;font-weight:800;font-size:14px;line-height:1.2;padding-right:18px">' + this.esc(s.name) + '</div>' +
+        '<div style="color:rgba(243,242,242,.6);font-size:11px;font-weight:600;margin-top:3px">' + this.esc(s.mainCategory || "—") + '</div></div>' +
+        '<div style="background:#f3f2f2;padding:12px 14px;font-size:12px;color:#201e1d">' +
+        '<div style="font-weight:700">' + this.esc(s.location || s.governorate) + '<span style="color:#605d5d;font-weight:600"> · ' + this.esc(s.governorate) + '</span></div>' +
+        '<div style="color:#605d5d;margin-top:3px">' + this.esc(s.contactName || "No contact named") + '</div>' +
+        '<div style="color:#605d5d">' + this.esc(s.contactNumber || "No number on file") + '</div>' +
+        '<div style="margin-top:6px;font-size:11px;font-weight:700;color:#605d5d">' + (s.localSupplier ? "Local supplier" : "International supplier") + ' · on file since ' + this.esc(s.since || "—") + '</div>' +
+        '<div style="margin-top:8px;display:inline-block;background:#eae9e9;padding:3px 8px;font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase">' + meta.label + '</div>' +
+        '</div></div>', { maxWidth: 270, minWidth: 250, closeButton: false, autoPan: false, offset: [0, -4] }
+      );
+      m.on("mouseover", () => { m.setStyle({ radius: 11, weight: 3 }); m.bringToFront(); m.openPopup(); });
+      m.on("mouseout", () => { m.setStyle({ radius: 7, weight: 1.6 }); m.closePopup(); });
+      m.on("click", () => this.setState({ selected: s.id }));
+      this._layer.addLayer(m);
+    });
+  }
+  esc(s){ return String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c])); }
+
+  /* ---------- data ---------- */
+  all(){
+    return this.state.list;
+  }
+  loadForEdit(id){
+    const s = this.all().find(x => x.id === id);
+    if (!s) return;
+    this.setState({
+      editingId: id,
+      form: {
+        name: s.name || "", mainCategory: s.mainCategory || "", subCategory: s.subCategory || "",
+        contactName: s.contactName || "", contactNumber: s.contactNumber || "", email: s.email || "",
+        location: s.location || "", district: s.district || "", governorate: s.governorate || "",
+        status: statusOf(s),
+        localSupplier: s.localSupplier === false ? "false" : "true"
+      },
+      pendingDocs: (s.documents || []).slice(),
+      coords: (s.lat != null && s.lng != null) ? s.lat.toFixed(5) + ", " + s.lng.toFixed(5) : ""
+    });
+    this._pinWanted = null;
+    this.toast('Editing "' + s.name + '". Change the fields above and save.');
+    if (typeof window !== "undefined") window.scrollTo({ top: 180, behavior: "smooth" });
+  }
+  removeSupplier(id){
+    const s = this.all().find(x => x.id === id);
+    if (!s) return;
+    if (!this.state.unlocked) { this.toast("Sign in with Google to delete records."); return; }
+    if (this.state.editingId === id) this.setState({ editingId: null });
+    this._sig = null;
+    db.collection("suppliers").doc(id).delete()
+      .then(() => this.toast('Deleted "' + s.name + '".'))
+      .catch(err => this.toast("Delete failed: " + err.message));
+  }
+  filtered(){
+    const st = this.state, q = st.q.trim().toLowerCase();
+    let out = this.all().filter(s => {
+      if (st.gov && s.governorate !== st.gov) return false;
+      if (st.cat && s.mainCategory !== st.cat) return false;
+      if (st.status && statusOf(s) !== st.status) return false;
+      if (q) {
+        const hay = [s.name, s.mainCategory, s.subCategory, s.contactName, s.location, s.district, s.governorate].join(" ").toLowerCase();
+        if (!hay.includes(q)) return false;
+      }
+      return true;
+    });
+    const d = st.dir;
+    const key = { name: s => (s.name||"").toLowerCase(), category: s => (s.mainCategory||"").toLowerCase(),
+      location: s => (s.location||"").toLowerCase(), rating: s => s.rating || 0,
+      experience: s => ({ esg:3, hulo:2, none:1 }[statusOf(s)] || 0), meta: s => s.since || 0 }[st.sort] || (s => s.name);
+    out = out.slice().sort((a,b) => { const x=key(a), y=key(b); return x<y ? -d : x>y ? d : 0; });
+    return out;
+  }
+  toast(msg){ this.setState({ toast: msg }); clearTimeout(this._t); this._t = setTimeout(() => this.setState({ toast: "" }), 2600); }
+
+  go(tab){ this.setState({ view: "app", tab, selected: null, paletteOpen: false }); }
+
+  renderVals(){
+    const st = this.state, all = this.all(), filtered = this.filtered();
+    const esgCount = all.filter(s => s.esgVerified).length;
+    const rated = all.filter(s => s.rating);
+    const avg = rated.length ? (rated.reduce((a,s) => a + s.rating, 0) / rated.length) : 0;
+    const showRatings = this.props.showRatings ?? true;
+    const rowsPerPage = this.props.rowsPerPage ?? 40;
+
+    /* nav */
+    const tabs = [["directory","Directory",all.length],["map","Map",filtered.length],["esg","ESG",esgCount],["add","Register",""]];
+    const navItems = tabs.map(([k,label,count]) => ({
+      label, count: count === "" ? "" : String(count), go: () => this.go(k),
+      color: st.view === "app" && st.tab === k ? "#fdd020" : "rgba(243,242,242,.72)",
+      rule: st.view === "app" && st.tab === k ? "#fdd020" : "transparent"
+    }));
+
+    /* landing */
+    const govStats = GOVS.map(g => {
+      const inG = all.filter(s => s.governorate === g);
+      const e = inG.filter(s => s.esgVerified).length;
+      const pct = inG.length ? Math.round(e / inG.length * 100) : 0;
+      return { name: g, pctW: pct + "%", detail: inG.length ? e + " of " + inG.length + " · " + pct + "%" : "—", count: inG.length, pct };
+    }).map(g => ({
+      ...g,
+      leafFill: g.pct >= 40 ? "#1F7A4C" : "#bab6b6",
+      leafScale: st.esgHover === g.name ? "scale(1.35) rotate(-8deg)" : "scale(1)",
+      hoverOn: () => this.setState({ esgHover: g.name }),
+      hoverOff: () => this.setState({ esgHover: null })
+    }));
+    const leafRow = Array.from({ length: 14 }).map((_, i) => ({
+      top: (8 + (i % 3) * 28) + "%", left: (i * 7.3) + "%",
+      dur: (6 + (i % 4)) + "s", delay: (-i * 0.7) + "s"
+    }));
+    const catCounts = {};
+    all.forEach(s => { if (s.mainCategory) catCounts[s.mainCategory] = (catCounts[s.mainCategory]||0) + 1; });
+    const catList = Object.entries(catCounts).sort((a,b) => b[1]-a[1]);
+    const catMax = catList.length ? catList[0][1] : 1;
+    const townCounts = {};
+    all.forEach(s => { const t = s.location || s.governorate; if (t) townCounts[t] = (townCounts[t]||0)+1; });
+
+    /* table */
+    const cols = [["name","Supplier"],["category","Category"],["location","Location"],["contact","Contact"],["experience","Status"],["meta","On file since"]];
+    const rows = filtered.slice(0, st.limit).map(s => {
+      const meta = EXPERIENCE[s.experience] || EXPERIENCE.no_experience;
+      return {
+        name: s.name, sub: s.subCategory || s.mainCategory || "—",
+        category: s.mainCategory || "—", town: s.location || "—", gov: s.governorate,
+        contact: s.contactName || "—", phone: s.contactNumber || "",
+        expLabel: STATUS[statusOf(s)].label, expColor: STATUS[statusOf(s)].color,
+        esgTag: s.esgVerified ? "ESG" : (s.localSupplier ? "LOCAL" : "INT'L"),
+        esgBg: s.esgVerified ? "#fdd020" : "#eae9e9", esgFg: "#201e1d",
+        meta: String(s.since || "—"), open: () => this.setState({ selected: s.id })
+      };
+    });
+
+    /* palette */
+    const pq = st.pq.trim().toLowerCase();
+    const cmds = [
+      { kind: "View", title: "Directory", hint: "All suppliers", run: () => this.go("directory") },
+      { kind: "View", title: "Map", hint: "Geographic spread", run: () => this.go("map") },
+      { kind: "View", title: "ESG dashboard", hint: "Coverage & categories", run: () => this.go("esg") },
+      { kind: "View", title: "Register a supplier", hint: "Team access", run: () => this.go("add") },
+      { kind: "View", title: "Landing page", hint: "Public overview", run: () => this.setState({ view:"landing", paletteOpen:false }) },
+      { kind: "Filter", title: "ESG verified only", hint: esgCount + " suppliers", run: () => this.setState({ view:"app", tab:"directory", status:"esg", paletteOpen:false }) },
+      { kind: "Filter", title: "Hulo verified only", hint: "Worked with before", run: () => this.setState({ view:"app", tab:"directory", status:"hulo", paletteOpen:false }) },
+      { kind: "Action", title: "Export current view to CSV", hint: filtered.length + " rows", run: () => { this.exportCsv(); } }
+    ].concat(GOVS.map(g => ({ kind: "Governorate", title: g, hint: (all.filter(s=>s.governorate===g).length) + " suppliers", run: () => this.setState({ view:"app", tab:"directory", gov:g, paletteOpen:false }) })));
+    let pres = pq
+      ? cmds.filter(c => (c.title + " " + c.kind).toLowerCase().includes(pq)).slice(0,4)
+          .concat(all.filter(s => (s.name + " " + s.mainCategory + " " + (s.location||"")).toLowerCase().includes(pq)).slice(0,8)
+            .map(s => ({ kind: "Supplier", title: s.name, hint: (s.location || s.governorate) + " · " + (s.mainCategory||""), run: () => this.setState({ selected: s.id, paletteOpen: false }) })))
+      : cmds.slice(0,8);
+    const pIdx = Math.min(st.pIdx, Math.max(0, pres.length - 1));
+    const paletteResults = pres.map((p,i) => ({ ...p, bg: i === pIdx ? "#fdd020" : "transparent", hover: () => this.setState({ pIdx: i }), run: p.run }));
+    this._pres = pres;
+
+    /* detail */
+    const s = all.find(x => x.id === st.selected);
+    let detail = { stats: [], fields: [], reviews: [], docs: [] };
+    if (s) {
+      const meta = EXPERIENCE[s.experience] || EXPERIENCE.no_experience;
+      const pool = REVIEWS[s.experience] || [];
+      const n = s.reviews ? Math.min(pool.length, 1 + Math.round(hash(s.name) * (pool.length - 1))) : 0;
+      detail = {
+        kicker: (s.localSupplier ? "Local supplier" : "International supplier") + (s.esgVerified ? " · ESG verified" : ""),
+        name: s.name, category: (s.mainCategory || "—") + (s.subCategory ? " · " + s.subCategory : ""),
+        stats: [
+          { value: STATUS[statusOf(s)].label, label: "Status", color: "#fdd020" },
+          { value: s.localSupplier ? "Local" : "Int'l", label: "Sourcing", color: "#f3f2f2" },
+          { value: String(s.documents ? s.documents.length : (s.docs || 0)), label: "Documents", color: "#f3f2f2" }
+        ],
+        fields: [
+          { k: "Contact", v: s.contactName || "—" },
+          { k: "Phone", v: s.contactNumber || "—" },
+          { k: "Email", v: s.email || "—" },
+          { k: "Town", v: s.location || "—" },
+          { k: "Address", v: s.address || "—" },
+          { k: "District", v: s.district || "—" },
+          { k: "Governorate", v: s.governorate || "—" },
+          { k: "Coordinates", v: s.lat.toFixed(4) + ", " + s.lng.toFixed(4) },
+          { k: "On file since", v: String(s.since || "—") }
+        ],
+        reviews: pool.slice(0, n).map(r => ({ text: r[0], by: r[1] })),
+        noReviews: n === 0,
+        docs: (s.documents && s.documents.length
+          ? s.documents.map(d => ({ name: d.name, meta: Math.max(1, Math.round((d.size||0)/1024)) + " KB", href: d.dataUrl || "#" }))
+          : DOCNAMES.slice(0, s.docs || 0).map((d,i) => ({ name: d, meta: (120 + i * 40) + " KB", href: "#" }))),
+        noDocs: !(s.documents && s.documents.length) && !s.docs
+      };
+    }
+
+    /* form */
+    const fields = [
+      { key:"name", label:"Supplier name", hint:"Company or individual" },
+      { key:"mainCategory", label:"Main category", select: (() => {
+          const base = catList.map(([c]) => c).sort((a, b) => a.localeCompare(b));
+          const cur = st.form.mainCategory;
+          const list = cur && base.indexOf(cur) === -1 ? [cur].concat(base) : base;
+          return [{ value:"", label:"Select…" }].concat(list.map(c => ({ value:c, label:c })));
+        })() },
+      { key:"subCategory", label:"Sub-category", hint:"e.g. Building materials" },
+      { key:"contactName", label:"Contact name", hint:"" },
+      { key:"contactNumber", label:"Phone", hint:"e.g. 03-123456" },
+      { key:"email", label:"Email", hint:"" },
+      { key:"location", label:"Town", hint:"e.g. Beirut" },
+      { key:"district", label:"District", select: (() => {
+          const base = st.form.governorate ? (DISTRICTS[st.form.governorate] || []) : ALL_DISTRICTS;
+          const cur = st.form.district;
+          const list = cur && base.indexOf(cur) === -1 ? [cur].concat(base) : base.slice();
+          return [{ value:"", label: st.form.governorate ? "Select…" : "All districts" }].concat(list.map(d => ({ value:d, label:d })));
+        })() },
+      { key:"governorate", label:"Governorate", select: [{ value:"", label:"Select…" }].concat(GOVS.map(g => ({ value:g, label:g }))) },
+      { key:"status", label:"Supplier status", select: Object.entries(STATUS).map(([k,v]) => ({ value:k, label:v.label })) },
+      { key:"localSupplier", label:"Local supplier", select: [{ value:"true", label:"Yes" }, { value:"false", label:"No" }] }
+    ].map(f => ({ ...f, isSelect: !!f.select, isText: !f.select, options: f.select || [], value: st.form[f.key] || "", hint: f.hint || "" }));
+
+    const mq = st.manageQ.trim().toLowerCase();
+    const manageList = (mq
+      ? all.filter(x => [x.name, x.mainCategory, x.subCategory, x.location, x.district, x.governorate].join(" ").toLowerCase().includes(mq))
+      : all);
+
+    const titles = {
+      directory: ["Directory", "Supplier directory", filtered.length + " of " + all.length + " suppliers match the current filters"],
+      map: ["Geography", "Where they are", "Pins coloured by supplier status: green for ESG verified, yellow where Hulo has worked with them before"],
+      esg: ["Accountability", "ESG & category coverage", "Verified share by governorate, and the categories that carry the volume"],
+      add: ["Register", "Add a supplier", "New entries appear instantly in the directory, map and dashboard"]
+    }[st.tab];
+
+    return {
+      navItems, liveLabel: all.length + " live records",
+      isLanding: st.view === "landing", isApp: st.view === "app",
+      isDirectory: st.tab === "directory", isMap: st.tab === "map", isEsg: st.tab === "esg", isAdd: st.tab === "add",
+      showFilters: st.tab === "directory" || st.tab === "map",
+      goHome: () => this.setState({ view: "landing", selected: null }),
+      goDirectory: () => this.go("directory"), goEsg: () => this.go("esg"),
+      openPalette: () => this.setState({ paletteOpen: true, pq: "", pIdx: 0 }),
+      closePalette: () => this.setState({ paletteOpen: false }),
+      paletteOpen: st.paletteOpen, pq: st.pq, paletteResults, paletteEmpty: pres.length === 0,
+      paletteRef: el => { if (el) setTimeout(() => el.focus(), 30); },
+      onPaletteInput: e => this.setState({ pq: e.target.value, pIdx: 0 }),
+      onPaletteKey: e => {
+        const list = this._pres || [];
+        if (e.key === "ArrowDown") { e.preventDefault(); this.setState({ pIdx: Math.min(list.length-1, st.pIdx+1) }); }
+        else if (e.key === "ArrowUp") { e.preventDefault(); this.setState({ pIdx: Math.max(0, st.pIdx-1) }); }
+        else if (e.key === "Enter") { const p = list[Math.min(st.pIdx, list.length-1)]; if (p) p.run(); }
+      },
+
+      totalLine: all.length + " suppliers.",
+      heroStats: [
+        { value: String(all.length), label: "Suppliers on file", color: "#f3f2f2" },
+        { value: String(esgCount), label: "ESG verified", color: "#fdd020" },
+        { value: "8", label: "Governorates covered", color: "#f3f2f2" },
+        { value: String(new Set(all.map(s => s.mainCategory).filter(Boolean)).size), label: "Categories covered", color: "#f3f2f2" }
+      ],
+      features: [
+        { num: "A", title: all.length + " vetted vendors", body: "Every record carries a contact, a town, a category and a working history. No blank columns." },
+        { num: "B", title: "Mapped to the town", body: "Geocoded across all eight governorates, so you can source close to where you deliver." },
+        { num: "C", title: "ESG verified", body: "Verified environmental and social criteria flagged on the record and totalled per district." },
+        { num: "D", title: "Export in one click", body: "Any filtered view leaves as CSV or PDF for a donor report or a tender file." }
+      ],
+      esgRows: govStats,
+      catRows: catList.slice(0,10).map(([name,count]) => ({ name, count: String(count), barW: Math.round(count/catMax*100) + "%" })),
+      topTowns: Object.entries(townCounts).sort((a,b)=>b[1]-a[1]).slice(0,7).map(([name,count]) => ({ name, count: String(count) })),
+      legend: Object.entries(STATUS).map(([k,v]) => ({ label: v.label, color: v.color, count: String(filtered.filter(s=>statusOf(s)===k).length) })),
+
+      pageKicker: titles[0], pageTitle: titles[1], pageSub: titles[2],
+      q: st.q, onSearch: e => this.setState({ q: e.target.value, limit: rowsPerPage }),
+      resultLabel: filtered.length + " match",
+      filterSelects: [
+        { value: st.gov, onChange: e => this.setState({ gov: e.target.value }), options: [{ value:"", label:"All governorates" }].concat(GOVS.map(g=>({ value:g, label:g }))) },
+        { value: st.cat, onChange: e => this.setState({ cat: e.target.value }), options: [{ value:"", label:"All categories" }].concat(catList.map(([c])=>({ value:c, label:c }))) },
+        { value: st.status, onChange: e => this.setState({ status: e.target.value }), options: [{ value:"", label:"All statuses" }].concat(Object.entries(STATUS).map(([k,v])=>({ value:k, label:v.label }))) }
+      ],
+      clearFilters: () => this.setState({ q:"", gov:"", cat:"", status:"", limit: rowsPerPage }),
+      liveStats: [
+        { value: String(filtered.length), label: "In this view" },
+        { value: String(filtered.filter(s=>s.esgVerified).length), label: "ESG verified here" },
+        { value: String(new Set(filtered.map(s=>s.mainCategory)).size), label: "Categories" },
+        { value: String(filtered.filter(s=>statusOf(s)==="hulo").length), label: "Hulo verified" }
+      ],
+      esgStats: [
+        { value: Math.round(esgCount/Math.max(1,all.length)*100) + "%", label: "ESG verified overall", color: "#1F7A4C", bg: "#eef6f0" },
+        { value: String(esgCount), label: "Verified suppliers", color: "#1F7A4C", bg: "#eef6f0" },
+        { value: String(all.filter(s=>s.localSupplier).length), label: "Local suppliers", color: "#201e1d", bg: "transparent" }
+      ],
+      leafRow,
+      columns: cols.map(([k,label]) => ({ label, arrow: st.sort === k ? (st.dir === 1 ? " ↑" : " ↓") : "",
+        sort: () => this.setState(p => ({ sort: k, dir: p.sort === k ? -p.dir : 1 })) })),
+      rows, isEmpty: filtered.length === 0,
+      hasMore: filtered.length > st.limit,
+      moreLabel: "Show " + Math.min(rowsPerPage, filtered.length - st.limit) + " more of " + filtered.length,
+      loadMore: () => this.setState(p => ({ limit: p.limit + rowsPerPage })),
+
+      hasDetail: !!s, detail, stop: e => e.stopPropagation(),
+      closeDetail: () => this.setState({ selected: null }),
+
+      locked: !st.unlocked, unlocked: st.unlocked,
+      authUser: st.authUser, authBusy: st.authBusy, authError: st.authError,
+      signedInEmail: st.authUser ? st.authUser.email : "",
+      signIn: () => this.signIn(),
+      signInLabel: st.authBusy ? "Signing in…" : "Sign in with Google",
+      lock: () => this.signOut(),
+      formFields: fields,
+      formNote: st.editingId ? "Editing an existing record" : ("Signed in as " + (st.authUser ? st.authUser.email : "") + " · synced to Firestore"),
+      submitLabel: st.editingId ? "Save changes" : "Add to the register",
+      isEditing: !!st.editingId,
+      cancelEdit: () => this.setState({ editingId: null, form: { status: "none", localSupplier: "true" }, pendingDocs: [], coords: "" }),
+      manageQ: st.manageQ,
+      onManageSearch: e => this.setState({ manageQ: e.target.value, manageLimit: 25 }),
+      manageNote: all.length + " records on file.",
+      manageHeads: ["Supplier","Category","Location","Experience","Actions"],
+      manageRows: manageList.slice(0, st.manageLimit).map(x => {
+        const meta = STATUS[statusOf(x)];
+        return {
+          name: x.name, sub: x.subCategory || "—", category: x.mainCategory || "—",
+          town: x.location || "—", district: x.district || x.governorate || "—",
+          expLabel: meta.label, expColor: meta.color,
+          bg: st.editingId === x.id ? "#fdd020" : "transparent",
+          edit: () => this.loadForEdit(x.id), remove: () => this.removeSupplier(x.id)
+        };
+      }),
+      manageMore: manageList.length > st.manageLimit,
+      manageMoreLabel: "Show 25 more of " + manageList.length + " records",
+      manageLoadMore: () => this.setState(p => ({ manageLimit: p.manageLimit + 25 })),
+      onField: e => { const k = e.target.name, v = e.target.value; this.setState(p => ({ form: { ...p.form, [k]: v } })); },
+      submitForm: () => this.submitForm(),
+
+      coords: st.coords,
+      onCoords: e => { this.setState({ coords: e.target.value }); this._pinWanted = e.target.value; },
+      clearPin: () => { this.setState({ coords: "" }); this.dropPin(null); },
+      pendingDocs: st.pendingDocs.map((d,i) => ({ name: d.name, size: Math.max(1, Math.round((d.size||0)/1024)) + " KB", remove: () => this.setState(p => ({ pendingDocs: p.pendingDocs.filter((x,j) => j !== i) })) })),
+      hasDocs: st.pendingDocs.length > 0,
+      onDocs: e => this.readDocs(e),
+      exportCsv: () => this.exportCsv(),
+      printView: () => window.print(),
+      toast: st.toast
+    };
+  }
+
+  submitForm(){
+    const f = this.state.form;
+    if (!this.state.unlocked) { this.toast("Sign in with Google to write to the register."); return; }
+    if (!f.name || !f.mainCategory || !f.governorate) { this.toast("Name, category and governorate are required."); return; }
+    if (this.state.editingId) {
+      const patch = {
+        name: f.name, mainCategory: f.mainCategory, subCategory: f.subCategory || "",
+        contactName: f.contactName || "", contactNumber: f.contactNumber || "", email: f.email || "",
+        location: f.location || "", district: f.district || "", governorate: f.governorate,
+        experience: f.status === "hulo" ? "good" : "no_experience",
+        esgVerified: f.status === "esg", localSupplier: f.localSupplier !== "false",
+        documents: this.state.pendingDocs.slice(), docs: this.state.pendingDocs.length
+      };
+      const pc = this.parseCoords();
+      if (pc) { patch.lat = pc[0]; patch.lng = pc[1]; }
+      const id = this.state.editingId;
+      db.collection("suppliers").doc(id).update(patch)
+        .then(() => this.toast('Saved changes to "' + f.name + '".'))
+        .catch(err => this.toast("Save failed: " + err.message));
+      this.setState({ editingId: null, form: { status: "none", localSupplier: "true" }, pendingDocs: [], coords: "" });
+      this._sig = null;
+      return;
+    }
+    const s = {
+      name: f.name, mainCategory: f.mainCategory, subCategory: f.subCategory || "",
+      contactName: f.contactName || "", contactNumber: f.contactNumber || "", email: f.email || "",
+      location: f.location || "", district: f.district || "", address: "", governorate: f.governorate,
+      localSupplier: f.localSupplier !== "false", esgVerified: f.status === "esg",
+      experience: f.status === "hulo" ? "good" : "no_experience",
+      documents: this.state.pendingDocs.slice(), docs: this.state.pendingDocs.length,
+      since: new Date().getFullYear(),
+      lat: 33.8547 + (hash(f.name) - .5) * .9, lng: 35.8623 + (hash(f.name + "x") - .5) * .5
+    };
+    const pc = this.parseCoords();
+    if (pc) { s.lat = pc[0]; s.lng = pc[1]; }
+    db.collection("suppliers").add(s)
+      .then(() => this.toast('"' + f.name + '" added to the register.'))
+      .catch(err => this.toast("Add failed: " + err.message));
+    this.setState({ form: { status: "none", localSupplier: "true" }, pendingDocs: [], coords: "" });
+    this._sig = null;
+  }
+
+  exportCsv(){
+    const rows = this.filtered();
+    const cols = ["name","mainCategory","subCategory","contactName","contactNumber","email","location","district","governorate","localSupplier","esgVerified","experience","lat","lng"];
+    const csv = [cols.join(",")].concat(rows.map(s => cols.map(c => '"' + String(s[c] == null ? "" : s[c]).replace(/"/g,'""') + '"').join(","))).join("\n");
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
+    a.download = "hulo-suppliers.csv";
+    a.click();
+    this.setState({ paletteOpen: false });
+    this.toast(rows.length + " rows exported as CSV.");
+  }
+}
+</script>
+
+
+</body></html>
