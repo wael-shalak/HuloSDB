@@ -9,12 +9,12 @@
 // security is enforced by firestore.rules (who can read/write data) and by
 // the OWNER_EMAIL check inside index.html (who is allowed to edit).
 firebase.initializeApp({
-  apiKey: "PASTE_YOUR_API_KEY_HERE",
-  authDomain: "PASTE_YOUR_PROJECT_ID_HERE.firebaseapp.com",
-  projectId: "PASTE_YOUR_PROJECT_ID_HERE",
-  storageBucket: "PASTE_YOUR_PROJECT_ID_HERE.appspot.com",
-  messagingSenderId: "PASTE_YOUR_SENDER_ID_HERE",
-  appId: "PASTE_YOUR_APP_ID_HERE"
+  apiKey: "AIzaSyBxJHiXnUgUeNpKQ2F48xGukmd8-xIoCQQ",
+  authDomain: "hulo-supplier-data-base.firebaseapp.com",
+  projectId: "hulo-supplier-data-base",
+  storageBucket: "hulo-supplier-data-base.firebasestorage.app",
+  messagingSenderId: "418554089223",
+  appId: "1:418554089223:web:0d90bb1cf23970abaffa2"
 });
 
 // Used throughout index.html as global `db`, `auth`.
