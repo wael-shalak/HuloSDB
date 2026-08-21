@@ -1700,6 +1700,7 @@ class Component extends DCLogic {
     L.tileLayer(theme, { maxZoom: 12 }).addTo(map);
     map.setView([33.86, 35.75], 8.4);
     this.state.list.forEach(s => {
+      if (s.lat == null || s.lng == null) return;
       L.circleMarker([s.lat, s.lng], {
         radius: s.esgVerified ? 5.5 : 3.5, weight: s.esgVerified ? 1.6 : 0,
         color: "#fdd020", fillColor: s.esgVerified ? "#fdd020" : "#f3f2f2",
@@ -1727,6 +1728,7 @@ class Component extends DCLogic {
     this._sig = sig;
     this._layer.clearLayers();
     this.filtered().forEach(s => {
+      if (s.lat == null || s.lng == null) return;
       const meta = STATUS[statusOf(s)];
       const key = statusOf(s);
       if (key === "esg") {
@@ -1916,7 +1918,7 @@ class Component extends DCLogic {
           { k: "Address", v: s.address || "—" },
           { k: "District", v: s.district || "—" },
           { k: "Governorate", v: s.governorate || "—" },
-          { k: "Coordinates", v: s.lat.toFixed(4) + ", " + s.lng.toFixed(4) },
+          { k: "Coordinates", v: (s.lat != null && s.lng != null) ? s.lat.toFixed(4) + ", " + s.lng.toFixed(4) : "Not on file" },
           { k: "On file since", v: String(s.since || "—") }
         ],
         reviews: pool.slice(0, n).map(r => ({ text: r[0], by: r[1] })),
