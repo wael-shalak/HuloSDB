@@ -1652,7 +1652,7 @@ class Component extends DCLogic {
     if (!el._done) {
       el._done = true;
       const map = L.map(el, { scrollWheelZoom: true }).setView([33.86, 35.75], 8);
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", { maxZoom: 18, attribution: "© OpenStreetMap, © CARTO" }).addTo(map);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, attribution: "© OpenStreetMap contributors" }).addTo(map);
       map.on("click", e => {
         const v = e.latlng.lat.toFixed(5) + ", " + e.latlng.lng.toFixed(5);
         this._pinWanted = v;
@@ -1693,11 +1693,8 @@ class Component extends DCLogic {
     const el = document.getElementById("heroMap");
     if (!el || el._done) return;
     el._done = true;
-    const theme = (this.props.mapTheme ?? "dark") === "dark"
-      ? "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png"
-      : "https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png";
     const map = L.map(el, { zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false, doubleClickZoom:false, keyboard:false, touchZoom:false });
-    L.tileLayer(theme, { maxZoom: 12 }).addTo(map);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19 }).addTo(map);
     map.setView([33.86, 35.75], 8.4);
     this.state.list.forEach(s => {
       if (s.lat == null || s.lng == null) return;
@@ -1719,7 +1716,7 @@ class Component extends DCLogic {
       if (this._tool) { try { this._tool.remove(); } catch (err) {} }
       this._sig = null;
       const map = L.map(el, { zoomControl: true, scrollWheelZoom: true }).setView([33.86, 35.75], 8);
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", { maxZoom: 18, attribution: "© OpenStreetMap, © CARTO" }).addTo(map);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, attribution: "© OpenStreetMap contributors" }).addTo(map);
       this._tool = map; this._layer = L.layerGroup().addTo(map);
       setTimeout(() => map.invalidateSize(), 120);
     }
